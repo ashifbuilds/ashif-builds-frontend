@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- SEO Friendly Title -->
+    <title>Meet Victor | Build an AI Assistant Like Jarvis</title>
+
+    <!-- Meta Descriptions and Keywords -->
+    <meta name="description" content="Meet Victor, your premier digital agency. Discover how to build an AI assistant like Jarvis to automate tasks, elevate productivity, and transform your workflow with smart AI solutions.">
+    <meta name="keywords" content="Meet Victor, build AI assistant like Jarvis, Jarvis like AI assistant, digital agency, custom AI development, AI automation, smart digital assistant">
+    <meta name="author" content="Meet Victor Digital Agency">
+
+    <!-- Favicon & App Icons (Update href paths to your actual files) -->
+    <link rel="icon" href="victor/favicon.png" sizes="any">
+    <link rel="icon" href="victor/favicon.png" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="victor/favicon.png">
+    <link rel="manifest" href="victor/favicon.png">
+
+    <!-- Open Graph / Facebook (Crucial for social sharing SEO) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ashifbuilds.in/"> <!-- Update with your actual URL -->
+    <meta property="og:title" content="Meet Victor | Build a Jarvis-Like AI Assistant">
+    <meta property="og:description" content="Meet Victor, your premier digital agency. Discover how to build an AI assistant like Jarvis to automate your workflow and elevate productivity.">
+    <meta property="og:image" content="https://ashifbuilds.in/img/og-image.jpg"> <!-- Update with your actual image path -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630"> <!-- 1200x630 is the optimal standard for OG images -->
+
+    <!-- Browser Colors & Mobile Web App settings -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F6">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161616">
+    <meta name="msapplication-navbutton-color" content="#161616">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- External Fonts, Icons & Frameworks (From your original code) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Local Stylesheets (Update paths if needed) -->
+    <!-- 
+    <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css"> 
+    -->
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden; /* Fixes the horizontal scroll, boss */
+            width: 100%;
+        }
+
+        .victor-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .glow-bg {
+            position: absolute;
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0) 70%);
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .jarvis-card {
+            background: linear-gradient(180deg, rgba(20, 20, 20, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .pill-tag {
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 99px;
+            padding: 8px 18px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #a1a1aa;
+        }
+
+        @media (min-width: 768px) {
+            .pill-tag {
+                padding: 10px 24px;
+                font-size: 1rem;
+            }
+        }
+
+        .btn-white {
+            background-color: #ffffff;
+            color: #000000;
+            transition: all 0.2s ease;
+        }
+        .btn-white:hover {
+            background-color: #e5e5e5;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .victor-glass-card {
+            background: rgba(20, 20, 20, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .victor-glass-card:hover {
+            transform: translateY(-8px);
+            background: rgba(30, 30, 30, 0.6);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .victor-dot {
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .victor-glass-card:hover .victor-dot {
+            background-color: #ffffff;
+            transform: scale(1.4);
+            box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.6);
+        }
+
+        .tech-hover-pro {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #a1a1aa;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 12px 20px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (min-width: 768px) {
+            .tech-hover-pro {
+                gap: 16px;
+                font-size: 1.4rem;
+                padding: 16px 32px;
+                border-radius: 16px;
+            }
+        }
+
+        .tech-hover-pro:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-8px) scale(1.05);
+        }
+
+        .faq-wrapper {
+            background: rgba(10, 10, 10, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 40px 15px;
+        }
+
+        @media (min-width: 768px) {
+            .faq-wrapper {
+                border-radius: 40px;
+                padding: 60px 40px;
+            }
+        }
+
+        .faq-trigger {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            gap: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .faq-trigger {
+                padding: 30px 35px;
+                font-size: 1.5rem;
+            }
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease-out;
+            padding: 0 15px;
+            color: #a1a1aa;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        @media (min-width: 768px) {
+            .faq-content {
+                padding: 0 35px;
+                font-size: 1.3rem;
+            }
+        }
+
+        .faq-item.active .faq-content {
+            max-height: 1000px; /* Allow space for wrapped text on mobile */
+            padding-bottom: 30px;
+        }
+
+        .faq-icon-box {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon-box {
+            transform: rotate(180deg);
+            background: #ffffff;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+ <header class="w-full border-b border-white/10 bg-[#050505]/90 backdrop-blur-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3 md:gap-4 group">
+            <img 
+                src="/img/logo.jpg" 
+                alt="Ashif Builds Logo" 
+                class="w-10 h-10 md:w-14 md:h-14 object-contain transition-transform duration-300 group-hover:scale-110"
+            >
+            
+            <span class="text-white font-bold text-lg md:text-2xl leading-tight tracking-tight">
+                Ashif<br>Builds
+            </span>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-8">
+            <a href="index.html" class="text-lg font-medium text-gray-300 hover:text-white transition-colors">Home</a>
+            <a href="about.html" class="text-lg font-medium text-gray-300 hover:text-white transition-colors">About</a>
+            <a href="portfolio.html" class="text-lg font-medium text-gray-300 hover:text-white transition-colors">Portfolio</a>
+            <a href="services.html" class="text-lg font-medium text-gray-300 hover:text-white transition-colors">Services</a>
+            <a href="pricing.html" class="text-lg font-medium text-gray-300 hover:text-white transition-colors">Pricing</a>
+                        <a href="resources.html" class="text-lg font-medium text-gray-300 hover:text-white transition-colors">Resources</a>
+
+            <a href="victor.html" class="text-lg font-medium text-white border-b-2 border-white pb-1">Meet Victor</a>
+        </nav>
+
+        <a href="contact.html" class="btn-outline px-5 md:px-8 py-2 md:py-3 rounded-full text-sm md:text-lg font-bold uppercase tracking-wider flex items-center gap-2">
+            <span>Contact</span>
+            <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+        </a>
+    </div>
+</header>
+
+    <main class="flex-grow victor-container">
+        <div class="max-w-6xl mx-auto px-6 pt-16 md:pt-32 pb-16 md:pb-32 flex flex-col items-center relative z-10">
+            <div class="glow-bg"></div>
+
+            <div class="flex items-center gap-3 mb-8 md:mb-10">
+                <span class="pill-tag flex items-center gap-3">
+                    <div class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-white animate-pulse"></div>
+                    Hello Sir, I am Victor!
+                </span>
+            </div>
+
+            <div class="jarvis-card w-full max-w-4xl py-5 md:py-6 px-6 md:px-8 text-center mb-12 md:mb-16 border-white/20">
+                <p class="text-sm md:text-lg text-gray-300 font-mono">
+                    <span class="text-white font-bold">> System Status:</span> Currently in the kitchen being cooked, but ready to serve soon...
+                </p>
+            </div>
+
+            <div id="victor-video-wrapper" class="w-full max-w-5xl flex flex-col items-center mb-20 md:mb-32 relative z-10">
+                <div class="w-full aspect-video jarvis-card relative overflow-hidden border-white/20 shadow-[0_0_50px_rgba(0,0,0,0.8)] p-0 mb-8 md:mb-10">
+                    <video id="victor-video" class="w-full h-full object-cover rounded-2xl pointer-events-none opacity-50 transition-opacity duration-1000" playsinline preload="auto">
+                        <source src="/video/victor.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <button id="wake-up-btn" class="btn-outline px-8 md:px-12 py-4 md:py-5 rounded-full text-lg md:text-xl font-bold uppercase tracking-[0.15em] md:tracking-[0.2em] flex items-center gap-4 hover:bg-white hover:text-black transition-all duration-500">
+                    <div class="w-3 h-3 rounded-full bg-white animate-pulse"></div>
+                    Wake Up Victor
+                </button>
+            </div>
+
+            <div class="w-full max-w-5xl mb-20 md:mb-32">
+                <div class="text-center mb-8">
+                    <span class="pill-tag uppercase">What Victor Can Do?</span>
+                </div>
+                <p class="text-lg md:text-xl text-gray-400 text-center mb-12 md:mb-16 max-w-3xl mx-auto leading-relaxed">
+                    Forged with modern tools and Intelligent APIs to handle the heavy lifting for your business.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    <div class="victor-glass-card p-6 md:p-10 flex items-start gap-6">
+                        <div class="mt-1 w-8 h-8 rounded-full border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                            <div class="victor-dot w-2.5 h-2.5 rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg md:text-xl text-white mb-3">Unlimited Memory</h4>
+                            <p class="text-sm md:text-base text-gray-400 leading-relaxed">Never forgets a single detail or past conversation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="victor-glass-card p-6 md:p-10 flex items-start gap-6">
+                        <div class="mt-1 w-8 h-8 rounded-full border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                            <div class="victor-dot w-2.5 h-2.5 rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg md:text-xl text-white mb-3">Logic Engine</h4>
+                            <p class="text-sm md:text-base text-gray-400 leading-relaxed">Advanced reasoning capabilities for complex tasks.</p>
+                        </div>
+                    </div>
+
+                    <div class="victor-glass-card p-6 md:p-10 flex items-start gap-6">
+                        <div class="mt-1 w-8 h-8 rounded-full border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                            <div class="victor-dot w-2.5 h-2.5 rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg md:text-xl text-white mb-3">Voice Synthesis</h4>
+                            <p class="text-sm md:text-base text-gray-400 leading-relaxed">Crystal clear, human-like voice communication.</p>
+                        </div>
+                    </div>
+
+                    <div class="victor-glass-card p-6 md:p-10 flex items-start gap-6">
+                        <div class="mt-1 w-8 h-8 rounded-full border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                            <div class="victor-dot w-2.5 h-2.5 rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg md:text-xl text-white mb-3">Real-Time Listening</h4>
+                            <p class="text-sm md:text-base text-gray-400 leading-relaxed">Zero latency audio processing and responses.</p>
+                        </div>
+                    </div>
+
+                    <div class="victor-glass-card p-6 md:p-10 flex items-start gap-6">
+                        <div class="mt-1 w-8 h-8 rounded-full border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                            <div class="victor-dot w-2.5 h-2.5 rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg md:text-xl text-white mb-3">Task Automation</h4>
+                            <p class="text-sm md:text-base text-gray-400 leading-relaxed">Seamlessly executes your complex digital chores.</p>
+                        </div>
+                    </div>
+
+                    <div class="victor-glass-card p-6 md:p-10 flex items-start gap-6">
+                        <div class="mt-1 w-8 h-8 rounded-full border-2 border-white/20 flex items-center justify-center flex-shrink-0">
+                            <div class="victor-dot w-2.5 h-2.5 rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg md:text-xl text-white mb-3">Context Awareness</h4>
+                            <p class="text-sm md:text-base text-gray-400 leading-relaxed">Understands the nuance and situation perfectly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full max-w-7xl mt-10 mb-20 md:mb-40 border-t border-b border-white/10 py-16 md:py-20">
+                <div class="text-center mb-10">
+                    <span class="pill-tag uppercase">The Secret Recipe</span>
+                </div>
+                <p class="text-xl md:text-2xl text-gray-400 text-center mb-12 md:mb-20 max-w-4xl mx-auto leading-relaxed">
+                    Forged with modern tools and Intelligent APIs to handle the heavy lifting.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                    <div class="tech-hover-pro"><i class="ph-bold ph-code-block text-2xl md:text-3xl"></i><span>Python Core</span></div>
+                    <div class="tech-hover-pro"><i class="ph-bold ph-link-simple-horizontal text-2xl md:text-3xl"></i><span>LangChain</span></div>
+                    <div class="tech-hover-pro"><i class="ph-bold ph-brain text-2xl md:text-3xl"></i><span>OpenAI Brain</span></div>
+                    <div class="tech-hover-pro"><i class="ph-bold ph-waveform text-2xl md:text-3xl"></i><span>ElevenLabs</span></div>
+                    <div class="tech-hover-pro"><i class="ph-bold ph-microphone text-2xl md:text-3xl"></i><span>Whisper AI</span></div>
+                    <div class="tech-hover-pro"><i class="ph-bold ph-robot text-2xl md:text-3xl"></i><span>Anthropic</span></div>
+                </div>
+            </div>
+
+            <div class="w-full max-w-5xl mb-20 md:mb-32">
+                <div class="text-center mb-8">
+                    <span class="pill-tag uppercase">Wanna Grab Victor?</span>
+                </div>
+                <p class="text-lg md:text-xl text-gray-400 text-center mb-12 md:mb-16">Victor is your loyal soldier, cleaning up your daily digital mess so you don't have to.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <div class="victor-glass-card p-8 md:p-12 flex flex-col justify-between h-full">
+                        <div>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-4 text-white">The Source Code</h3>
+                            <p class="text-sm md:text-base text-gray-400 mb-8 leading-relaxed">For the DIY builders. Get the latest raw codebase and run it on your own server. Total control.</p>
+                            <div class="text-xl md:text-2xl font-bold text-white mb-10 border-b border-white/10 pb-6">Special Handcrafted Code</div>
+                            <ul class="space-y-4 md:space-y-5 mb-12 text-sm md:text-base text-gray-300 font-medium">
+                                <li class="flex items-center gap-4"><svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Full Repository Access</li>
+                                <li class="flex items-center gap-4"><svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Basic Documentation</li>
+                                <li class="flex items-center gap-4"><svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Community Support</li>
+                            </ul>
+                        </div>
+                        <button class="btn-white w-full py-4 md:py-5 rounded-full text-lg font-bold uppercase tracking-wider">Buy Code</button>
+                    </div>
+
+                    <div class="victor-glass-card p-8 md:p-12 flex flex-col justify-between h-full bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a]">
+                        <div>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-4 text-white flex justify-between items-center">Full Victor Setup <span class="text-[10px] bg-white text-black px-3 py-1 rounded-full font-bold uppercase tracking-wider">Turnkey</span></h3>
+                            <p class="text-sm md:text-base text-gray-400 mb-8 leading-relaxed">Want it installed and running smoothly without touching the code? Leave it entirely to us.</p>
+                            <div class="text-xl md:text-2xl font-bold text-white mb-10 border-b border-white/10 pb-6">Custom Quote</div>
+                            <ul class="space-y-4 md:space-y-5 mb-12 text-sm md:text-base text-gray-300 font-medium">
+                                <li class="flex items-center gap-4"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Dedicated Installation</li>
+                                <li class="flex items-center gap-4"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Environment Configured</li>
+                                <li class="flex items-center gap-4"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Premium Maintenance</li>
+                            </ul>
+                        </div>
+                        <button class="btn-outline w-full py-4 md:py-5 rounded-full text-lg font-bold uppercase tracking-wider">Request Build</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full max-w-6xl mx-auto mb-20 md:mb-40">
+                <div class="faq-wrapper">
+                    <div class="text-center mb-6">
+                        <span class="pill-tag px-6 py-2 border border-white/20 rounded-full text-xs uppercase tracking-widest bg-white/5">
+                            <span class="w-2 h-2 rounded-full bg-gray-400 inline-block mr-2"></span> FAQ
+                        </span>
+                    </div>
+
+                    <h2 class="text-3xl md:text-6xl font-extrabold text-center text-white mb-12 md:mb-20 tracking-tight">
+                        Purchasing and setup — answered.
+                    </h2>
+
+                    <div class="faq-container space-y-4">
+                        <div class="faq-item" onclick="handleFaqToggle(this)">
+                            <div class="faq-trigger">
+                                <span>What exactly is Victor Source Access?</span>
+                                <div class="faq-icon-box"><i class="ph-bold ph-caret-down"></i></div>
+                            </div>
+                            <div class="faq-content">
+                                It gives you full ownership of Victor's core engine. You get the raw Python codebase, logic modules, and deployment scripts to host him on your own private infrastructure.
+                            </div>
+                        </div>
+
+                        <div class="faq-item" onclick="handleFaqToggle(this)">
+                            <div class="faq-trigger">
+                                <span>What source code do I get access to?</span>
+                                <div class="faq-icon-box"><i class="ph-bold ph-caret-down"></i></div>
+                            </div>
+                            <div class="faq-content">
+                                You get the complete repository including the Neural Processing Unit, the Memory Management system, and the Voice Synthesis integration layer. Everything you need for a full AI soldier.
+                            </div>
+                        </div>
+
+                        <div class="faq-item" onclick="handleFaqToggle(this)">
+                            <div class="faq-trigger">
+                                <span>Is the setup easy for beginners?</span>
+                                <div class="faq-icon-box"><i class="ph-bold ph-caret-down"></i></div>
+                            </div>
+                            <div class="faq-content">
+                                The code is well-documented, sir. But if you aren't comfortable with terminals and APIs, I highly recommend our 'Full Setup' service where my team handles the dirty work for you.
+                            </div>
+                        </div>
+
+                        <div class="faq-item" onclick="handleFaqToggle(this)">
+                            <div class="faq-trigger">
+                                <span>Can I customize Victor's personality?</span>
+                                <div class="faq-icon-box"><i class="ph-bold ph-caret-down"></i></div>
+                            </div>
+                            <div class="faq-content">
+                                Absolutely, boss. You can modify the system prompts to make him as formal or as witty as you like. He is a loyal soldier; he will speak exactly how you command.
+                            </div>
+                        </div>
+
+                        <div class="faq-item" onclick="handleFaqToggle(this)">
+                            <div class="faq-trigger">
+                                <span>How do I get support if I need help?</span>
+                                <div class="faq-icon-box"><i class="ph-bold ph-caret-down"></i></div>
+                            </div>
+                            <div class="faq-content">
+                                You get direct access to our priority support channel. If Victor gets stuck, we jump in and fix it. No one gets left behind.
+                            </div>
+                        </div>
+
+                        <div class="faq-item" onclick="handleFaqToggle(this)">
+                            <div class="faq-trigger">
+                                <span>Can I get a refund once the payment is made?</span>
+                                <div class="faq-icon-box"><i class="ph-bold ph-caret-down"></i></div>
+                            </div>
+                            <div class="faq-content">
+                                Once the payment is done, there is no refund to be made. However, we offer a 14-day period to test the service. If you decide you don't like it within that 14-day window, your money will be fully refunded.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full border-t border-white/10 bg-[#050505] pt-16 md:pt-20 pb-10 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16 mb-20">
+         <div class="col-span-1 md:col-span-2">
+    <div class="flex items-center gap-4 font-semibold tracking-tight text-white mb-8">
+        <img 
+            src="img/logo.jpg" 
+            alt="Ashif Builds Logo" 
+            class="w-10 h-10 md:w-12 md:h-12 object-contain"
+        >
+        <span class="text-2xl md:text-3xl">Ashif Builds</span>
+    </div>
+
+    <p class="text-base md:text-lg text-gray-500 max-w-md leading-relaxed">
+        Ashif Builds provides premium website design, custom web development, and digital solutions to grow your business.
+    </p>
+</div>
+
+            <div>
+                <h5 class="text-white text-sm font-bold uppercase tracking-widest mb-8">Navigation</h5>
+                <ul class="space-y-4 text-base md:text-lg text-gray-400">
+                    <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="portfolio.html" class="hover:text-white transition-colors">Portfolio</a></li>
+                    <li><a href="services.html" class="hover:text-white transition-colors">Services</a></li>
+                       <li><a href="pricing.html" class="hover:text-white transition-colors">Pricing</a></li>
+                           <li><a href="resources.html" class="hover:text-white transition-colors">Resources</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="text-white text-sm font-bold uppercase tracking-widest mb-8">Get in Touch</h5>
+                <ul class="space-y-4 text-base md:text-lg text-gray-400">
+                    <li>info@ashifbuilds.in</li>
+                    <li>+91 7908469371</li>
+                </ul>
+                
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between pt-10 border-t border-white/10 text-sm md:text-base text-gray-600 gap-4">
+            <p>&copy; 2026 Ashif Builds. All rights reserved.</p>
+            <div class="flex gap-8">
+                <a href="privacy.html" class="hover:text-gray-300 transition-colors">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-gray-300 transition-colors">Terms of Service</a>
+                <a href="refund.html" class="hover:text-gray-300 transition-colors">Refund Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Video 'Wake Up' Logic
+        const video = document.getElementById('victor-video');
+        const wakeUpBtn = document.getElementById('wake-up-btn');
+
+        if(wakeUpBtn) {
+            wakeUpBtn.addEventListener('click', () => {
+                video.muted = false;
+                video.currentTime = 0; 
+                video.play();
+                video.style.opacity = '1';
+                wakeUpBtn.style.opacity = '0';
+                wakeUpBtn.style.transform = 'translateY(20px)';
+                wakeUpBtn.style.pointerEvents = 'none';
+                setTimeout(() => { wakeUpBtn.style.display = 'none'; }, 500);
+            });
+        }
+
+        // 2. Premium FAQ Accordion Logic
+        function handleFaqToggle(element) {
+            const isActive = element.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            if (!isActive) {
+                element.classList.add('active');
+            }
+        }
+    </script>
+    <style>
+  .whatsapp-float-btn {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366; /* Official WhatsApp Green */
+    border-radius: 50px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999; /* Keeps it on top of everything, sir */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Little bounce effect when they hover over it */
+  .whatsapp-float-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  .whatsapp-icon-svg {
+    width: 35px;
+    height: 35px;
+    fill: #ffffff;
+  }
+</style>
+
+
+
+
+
+
+
+<style>
+  
+
+<div class="ai-chat-window" id="aiChatWindow">
+  <div class="ai-chat-header">
+    <span>Ashif's AI Agent</span>
+    <button class="ai-close-btn" onclick="toggleChat()">✖</button>
+  </div>
+  <div class="ai-chat-body" id="aiChatBody">
+    <div class="ai-msg">Hello boss! I am the AI assistant for Ashif Builds. Do you want to see a demo of what I can do for your business?</div>
+  </div>
+  <div class="ai-chat-footer">
+    <input type="text" id="aiChatInput" placeholder="Type your message..." onkeypress="handleEnter(event)">
+    <button onclick="sendUserMessage()">Send</button>
+  </div>
+</div>
+
+<style>
+  /* Floating Button */
+  .ai-chat-btn {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 110px; /* Placed slightly above your WhatsApp button, sir */
+    right: 40px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    border: none;
+    transition: transform 0.3s;
+  }
+  .ai-chat-btn:hover {
+    transform: scale(1.1);
+  }
+
+  /* Chat Window */
+  .ai-chat-window {
+    position: fixed;
+    bottom: 180px;
+    right: 40px;
+    width: 350px;
+    height: 450px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    z-index: 9999;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Header */
+  .ai-chat-header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ai-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  /* Chat Body area */
+  .ai-chat-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Message Bubbles */
+  .ai-msg, .user-msg {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .ai-msg {
+    background-color: #e9ecef;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+  }
+  .user-msg {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+  }
+
+  /* Input Area */
+  .ai-chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background: white;
+  }
+  .ai-chat-footer input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+  }
+  .ai-chat-footer button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+</style>
+<style>
+  /* Force hide any old, stubborn buttons, sir! */
+  .ai-chat-btn, .whatsapp-float-btn:not(.fab-wa) {
+    display: none !important;
+  }
+
+  /* The Main Container */
+  .smart-fab-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* The Hidden Menu */
+  .smart-fab-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .smart-fab-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Styling for the small option buttons */
+  .fab-option {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  
+  .fab-option:hover {
+    transform: scale(1.1);
+  }
+
+  /* WhatsApp Option */
+  .fab-wa {
+    background-color: #25d366;
+  }
+  .fab-wa svg {
+    width: 25px;
+    height: 25px;
+    fill: #ffffff;
+  }
+
+  /* AI Bot Option */
+  .fab-ai {
+    background-color: #007bff;
+    color: white;
+    font-size: 24px;
+  }
+
+  /* The Main Trigger Button (The Boss Button - UPGRADED) */
+  .smart-fab-main {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* Premium Purple to Violet Gradient */
+    background: linear-gradient(135deg, #9b51e0, #6a11cb); 
+    color: white;
+    border: none;
+    box-shadow: 2px 4px 15px rgba(106, 17, 203, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  /* Universal Contact Icon sizing */
+  .smart-fab-main .fab-icon-open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .smart-fab-main .fab-icon-open svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .smart-fab-main .fab-icon-close {
+    display: none;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  /* When clicked/active */
+  .smart-fab-main.active {
+    background: #ff3b30; /* Turns red to indicate close */
+    transform: rotate(90deg); /* Smooth spin effect */
+  }
+  
+  /* Swap icons when active */
+  .smart-fab-main.active .fab-icon-open { display: none; }
+  .smart-fab-main.active .fab-icon-close { display: block; }
+  
+  /* Mobile adjustments */
+  @media screen and (max-width: 768px) {
+    .smart-fab-container {
+      bottom: 20px;
+      right: 20px;
+    }
+  }
+</style>
+
+<div class="smart-fab-container">
+  <div class="smart-fab-menu" id="smartFabMenu">
+    
+    <a href="https://wa.me/917908469371?text=Hello%20Ashif%20Builds,%20I%20want%20to%20discuss%20a%20project!" 
+       class="fab-option fab-wa" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       title="WhatsApp Us">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-15.3 7.4-5.6 6-21.3 20.8-21.3 50.9s21.8 59.3 24.8 63.3c3.2 4.2 43.1 65.8 104.3 92.2 14.6 6.3 26 10.1 34.9 12.9 14.6 4.6 27.9 4 38.3 2.4 11.6-1.8 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+      </svg>
+    </a>
+
+    <button class="fab-option fab-ai" onclick="openAiChatAndCloseMenu()" title="AI Assistant">
+      🤖
+    </button>
+  </div>
+
+  <button class="smart-fab-main" id="smartFabMainBtn" onclick="toggleSmartMenu()">
+    <span class="fab-icon-open">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"></path>
+        <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path>
+      </svg>
+    </span>
+    <span class="fab-icon-close">✖</span>
+  </button>
+</div>
+
+<script>
+  function toggleSmartMenu() {
+    const menu = document.getElementById('smartFabMenu');
+    const mainBtn = document.getElementById('smartFabMainBtn');
+    
+    menu.classList.toggle('active');
+    mainBtn.classList.toggle('active');
+  }
+
+  function openAiChatAndCloseMenu() {
+    toggleChat(); 
+    toggleSmartMenu(); 
+  }
+</script>
+
+
+<button class="ai-chat-btn" id="aiChatToggle" onclick="toggleChat()" title="Chat with our AI Agent">🤖</button>
+
+<div class="ai-chat-window" id="aiChatWindow">
+  <div class="ai-chat-header">
+    <span>Ashif's AI Agent</span>
+    <button class="ai-close-btn" onclick="toggleChat()">✖</button>
+  </div>
+  <div class="ai-chat-body" id="aiChatBody">
+    <div class="ai-msg">Hello boss! I am the AI assistant for Ashif Builds. How can I help your business grow today?</div>
+  </div>
+  <div class="ai-chat-footer">
+    <input type="text" id="aiChatInput" placeholder="Type your message..." onkeypress="handleEnter(event)">
+    <button onclick="sendUserMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+  // Show or hide the chat window
+  function toggleChat() {
+    const chatWindow = document.getElementById('aiChatWindow');
+    if (chatWindow.style.display === 'flex') {
+      chatWindow.style.display = 'none';
+    } else {
+      chatWindow.style.display = 'flex';
+    }
+  }
+
+  // Send message on hitting Enter key
+  function handleEnter(event) {
+    if (event.key === 'Enter') {
+      sendUserMessage();
+    }
+  }
+
+  // Handle the user sending a message
+  async function sendUserMessage() {
+    const inputField = document.getElementById('aiChatInput');
+    const messageText = inputField.value.trim();
+    if (messageText === '') return;
+
+    // 1. Display User Message
+    addMessageToChat(messageText, 'user-msg');
+    inputField.value = ''; // Clear input
+
+    // 2. Show a temporary "typing" message from AI
+    const typingId = "typing-" + Date.now();
+    addMessageToChat("Typing...", 'ai-msg', typingId);
+
+    // 3. Connect to your live Google Apps Script URL, sir!
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwpTJAUoZYmjo8dgMUN4vtW-kViyAlwRRhqW5UYT9LJK16-jVzCuQKpHfFJZQxF04TW/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8' 
+        },
+        body: JSON.stringify({ message: messageText }) 
+      });
+
+      const data = await response.json();
+      
+      // Remove typing indicator
+      const typingElement = document.getElementById(typingId);
+      if(typingElement) typingElement.remove();
+
+      // Display AI Message
+      const botResponse = data.reply || "Message received, but I don't know what to say yet!";
+      addMessageToChat(botResponse, 'ai-msg');
+
+    } catch (error) {
+      // If the internet drops or the server fails
+      const typingElement = document.getElementById(typingId);
+      if(typingElement) typingElement.remove();
+      addMessageToChat("Sorry sir, my server connection is taking a tea break. Please try again or use WhatsApp!", 'ai-msg');
+      console.error("AI Chat Error:", error);
+    }
+  }
+
+  // Helper function to create message bubbles
+  function addMessageToChat(text, className, id = null) {
+    const chatBody = document.getElementById('aiChatBody');
+    const msgDiv = document.createElement('div');
+    msgDiv.className = className;
+    msgDiv.innerText = text;
+    if (id) msgDiv.id = id;
+    
+    chatBody.appendChild(msgDiv);
+    
+    // Automatically scroll to the bottom when new message arrives, sir
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+</script>
+</body>
+</html>
