@@ -222,7 +222,7 @@ async function handleOrderSubmit(e) {
     submitBtn.disabled = true;
 
     try {
-        const backendURL = "/.netlify/functions/paytm";
+        const backendURL = "https://ashif-backend.onrender.com/api/paytm/initiate";
         const email = document.querySelector('input[name="email"]').value;
 
         const response = await fetch(backendURL, {
