@@ -198,147 +198,62 @@
         </div>
     </footer>
 
-    <script>
-        // --- 1. Dynamic Pricing Engine ---
-        const urlParams = new URLSearchParams(window.location.search);
-        const projectParam = urlParams.get('project');
-        const priceParam = urlParams.get('price');
-        
-        let numericPrice = 0; // We need this variable for the Paytm backend
+   // --- 1. Pricing Engine ---
+const urlParams = new URLSearchParams(window.location.search);
+const projectParam = urlParams.get('project');
+const priceParam = urlParams.get('price');
+let numericPrice = priceParam ? parseFloat(priceParam) : 0;
 
-        if (projectParam) {
-            document.getElementById('projectName').innerText = projectParam.replace(/-/g, ' ');
-        }
-        
-        let finalDisplayPrice = "TBD";
-        if (priceParam) {
-            if (priceParam.toLowerCase() === 'custom') {
-                finalDisplayPrice = "Custom Quote";
-            } 
-            else if (!isNaN(priceParam) && priceParam.trim() !== "") {
-                numericPrice = parseFloat(priceParam);
-                finalDisplayPrice = "₹" + numericPrice.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            } 
-            else {
-                finalDisplayPrice = priceParam.replace(/-/g, ' '); 
-            }
+if (projectParam) document.getElementById('projectName').innerText = projectParam.replace(/-/g, ' ');
+if (priceParam) {
+    let displayPrice = "₹" + numericPrice.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+    document.getElementById('basePrice').innerText = displayPrice;
+    document.getElementById('totalPrice').innerText = displayPrice;
+    document.getElementById('btnPrice').innerText = displayPrice;
+}
 
-            document.getElementById('basePrice').innerText = finalDisplayPrice;
-            document.getElementById('totalPrice').innerText = finalDisplayPrice;
-            
-            if(finalDisplayPrice !== "Custom Quote" && finalDisplayPrice !== "TBD") {
-                document.getElementById('btnPrice').innerText = finalDisplayPrice;
-            }
-        }
-
-        // --- 2. Interactive Fake Payment UI Logic ---
-        function selectPayment(method) {
-            document.getElementById('pay_' + method).checked = true;
-
-            const containers = ['card', 'upi', 'net', 'pod'];
-            containers.forEach(id => {
-                const el = document.getElementById(id + 'Container');
-                el.classList.remove('border-blue-500', 'bg-blue-50/30');
-                el.classList.add('border-gray-200');
-            });
-
-            const selectedEl = document.getElementById(method === 'netbanking' ? 'netContainer' : method + 'Container');
-            selectedEl.classList.remove('border-gray-200');
-            selectedEl.classList.add('border-blue-500', 'bg-blue-50/30');
-
-            const dummyForm = document.getElementById('dummyCardForm');
-            if (method === 'card') {
-                dummyForm.classList.add('active');
-            } else {
-                dummyForm.classList.remove('active');
-            }
-        }
-
-        // --- 3. THE MAGIC HYBRID SUBMIT ACTION ---
-       async function handleOrderSubmit(e) {
-    e.preventDefault(); 
-    const form = e.target;
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.innerHTML = "Processing...";
-
-    // We removed the Formspree part. Now jump straight to Payment.
+// --- 2. Unified Submit Action ---
+async function handleOrderSubmit(e) {
+    e.preventDefault(); // This STOPS the page from refreshing
     
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    submitBtn.innerHTML = "Processing...";
+    submitBtn.disabled = true;
+
     try {
         const backendURL = "/.netlify/functions/paytm";
-        const userEmail = document.getElementById('userEmail').value;
+        const email = document.querySelector('input[name="email"]').value;
+
         const response = await fetch(backendURL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ amount: numericPrice, email: userEmail })
+            body: JSON.stringify({ amount: numericPrice, email: email })
         });
+
+        if (!response.ok) throw new Error("Backend failed");
 
         const data = await response.json();
         
-        // ... (Keep the rest of your Paytm CheckoutJS code here)
-    } catch (error) {
+        // Paytm Popup Logic
+        var config = {
+            "root": "",
+            "flow": "DEFAULT",
+            "data": { "orderId": data.orderId, "token": data.token, "tokenType": "TXN_TOKEN", "amount": data.amount },
+            "handler": { "notifyMerchant": (e, d) => console.log(e, d) }
+        };
+        
+        if (window.Paytm && window.Paytm.CheckoutJS) {
+            window.Paytm.CheckoutJS.init(config).then(() => window.Paytm.CheckoutJS.invoke());
+        } else {
+            alert("Paytm Gateway not loaded.");
+        }
+    } catch (err) {
+        console.error(err);
         alert("Server error. Check Netlify logs.");
+    } finally {
+        submitBtn.innerHTML = "Pay Securely";
+        submitBtn.disabled = false;
     }
 }
-
-            // STEP B: Handle Custom Quotes without opening Gateway
-            if (numericPrice === 0) {
-                alert('🎉 Request Received! Since this is a custom quote, our team will contact you shortly to finalize the pricing.');
-                window.location.href = "https://ashifbuilds.in/portfolio";
-                return;
-            }
-
-            // STEP C: Contact Replit Backend and Open Paytm Popup
-            try {
-                // 🟢 ADDED: Your Live Replit URL
-
-// Use the link Render provides after you deploy
-const backendURL = "https://your-render-url-here.onrender.com/api/paytm/initiate";
-
-                const userEmail = document.getElementById('userEmail').value;
-
-                // 1. Ask your Replit server for the secure txnToken
-                const response = await fetch(backendURL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ amount: numericPrice, email: userEmail })
-                });
-
-                const data = await response.json();
-
-                // 2. Feed the token to Paytm's Popup Engine
-                var config = {
-                    "root": "",
-                    "flow": "DEFAULT",
-                    "data": {
-                        "orderId": data.orderId,
-                        "token": data.token,
-                        "tokenType": "TXN_TOKEN",
-                        "amount": data.amount
-                    },
-                    "handler": {
-                        "notifyMerchant": function(eventName, data) {
-                            console.log("Paytm Event:", eventName);
-                        }
-                    }
-                };
-
-                if(window.Paytm && window.Paytm.CheckoutJS){
-                    window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
-                        window.Paytm.CheckoutJS.invoke(); // 🚀 BOOM! The real popup opens here!
-                    }).catch(function onError(error){
-                        console.log("Paytm Error => ", error);
-                    });
-                } else {
-                    alert("Paytm Gateway is loading. Please check your internet and try again.");
-                }
-
-            } catch (error) {
-                alert("Oops! Server connection issue. Please click the button one more time.");
-            }
-
-            // Reset button if popup is closed
-            submitBtn.innerHTML = originalBtnText; 
-        }
-    </script>
 </body>
 </html>
