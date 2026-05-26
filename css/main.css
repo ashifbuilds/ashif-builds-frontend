@@ -6815,7 +6815,15 @@ form textarea:required:valid {
 
 .footer-blocks__title-l {
   font: normal var(--fw-medium) 3rem/1.2 var(--_font-accent);
-  color: var(--t-bright);
+  
+  /* The premium Purple-to-Violet gradient */
+  background: linear-gradient(135deg, #9d4edd 0%, #d946ef 100%);
+  
+  /* The jugaad to paint the text with the gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Fallback for older browsers */
 }
 @media only screen and (min-width: 768px) {
   .footer-blocks__title-l {
@@ -6850,10 +6858,27 @@ form textarea:required:valid {
 
 .footer-socials__link {
   font: normal var(--fw-regular) 2.2rem/1.6 var(--_font-accent);
-  color: #5e0090;
+  
+  /* The beautiful Purple-to-Violet gradient */
+  background: linear-gradient(135deg, #9d4edd 0%, #d946ef 100%);
+  
+  /* The jugaad to clip the background to the text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Fallback */
+  
+  /* Adding a smooth transition for hovering */
+  transition: all 0.3s ease;
+  display: inline-block; /* Helps with transform animations */
 }
-.no-touch .footer-socials__link:hover {
-  color: var(--t-medium);
+
+/* A little extra magic when the user hovers over the link, sir! */
+.footer-socials__link:hover {
+  background: linear-gradient(135deg, #d946ef 0%, #9d4edd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateY(-3px);
 }
 
 /* ------------------------------------------------*/
@@ -26043,3 +26068,161 @@ div.v-tag.v-c8 { background-color: #10A37F !important; background: #10A37F !impo
   object-fit: cover; 
 }
 
+/* ---------------------------------------------------
+   1. HEADINGS: Premium Gold (Distinct from sub-links)
+   --------------------------------------------------- */
+.footer-blocks__title-l {
+  font: normal var(--fw-medium) 3rem/1.2 var(--_font-accent);
+  /* A rich gold-to-orange gradient that pops on white AND black */
+  background: linear-gradient(135deg, #d4af37 0%, #ea580c 100%); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; 
+}
+
+/* ---------------------------------------------------
+   2. SUB-LINKS: Beautiful Purple/Violet
+   --------------------------------------------------- */
+/* Ecosystem Links */
+.footer-socials__link {
+  font: normal var(--fw-regular) 2.2rem/1.6 var(--_font-accent);
+  background: linear-gradient(135deg, #a855f7 0%, #d946ef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; 
+  transition: all 0.3s ease;
+  display: inline-block; 
+}
+
+/* Registration & Feedback Links */
+.mxd-point-subtitle a {
+  background: linear-gradient(135deg, #a855f7 0%, #d946ef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* ---------------------------------------------------
+   3. HOVER FIX: The Ultimate Shield Against the Black Bug! 
+   --------------------------------------------------- */
+.footer-socials__link:hover {
+  background: linear-gradient(135deg, #d946ef 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  /* !important forces the browser to ignore the template's black hover */
+  -webkit-text-fill-color: transparent !important; 
+  color: transparent !important; 
+  transform: translateY(-3px);
+}
+
+.mxd-point-subtitle a:hover {
+  background: linear-gradient(135deg, #d946ef 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  /* !important forces the browser to ignore the template's black hover */
+  -webkit-text-fill-color: transparent !important; 
+  color: transparent !important; 
+  transform: translateX(4px);
+}
+
+/* --- FOMO Scarcity Widget Styles --- */
+.scarcity-widget {
+    background: rgba(147, 51, 234, 0.08);
+    border: 1px dashed rgba(212, 175, 55, 0.5);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.timer-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #a855f7;
+    margin-bottom: 10px;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.time-block {
+    background: linear-gradient(135deg, #111827 0%, #3b0764 100%);
+    padding: 10px 12px;
+    border-radius: 12px;
+    min-width: 65px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(147, 51, 234, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.time-block span {
+    font-size: 26px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #d4ff32 0%, #16a34a 100%); /* Neon Green! */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+}
+
+.time-block small {
+    font-size: 10px;
+    color: #d1d5db;
+    text-transform: uppercase;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+}
+
+.passes-tracker {
+    margin-top: 10px;
+}
+
+.tracker-text {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: inherit;
+}
+
+.highlight-gold {
+    font-size: 20px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #d4af37 0%, #ea580c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.progress-container {
+    width: 100%;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #d4af37, #ea580c);
+    border-radius: 50px;
+    transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 10px rgba(234, 88, 12, 0.6);
+    animation: pulse-glow 2s infinite alternate;
+}
+
+@keyframes pulse-glow {
+    0% { opacity: 0.8; filter: brightness(1); }
+    100% { opacity: 1; filter: brightness(1.2); }
+}
