@@ -26226,3 +26226,37 @@ div.v-tag.v-c8 { background-color: #10A37F !important; background: #10A37F !impo
     0% { opacity: 0.8; filter: brightness(1); }
     100% { opacity: 1; filter: brightness(1.2); }
 }
+
+/* Marquee Styling */
+.custom-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: #111827; /* Dark background to make it pop */
+  color: #ffffff;
+  padding: 12px 0;
+  white-space: nowrap;
+  display: flex;
+}
+
+.custom-marquee-content {
+  display: inline-block;
+  animation: scroll-marquee 15s linear infinite;
+  /* Applying the Milker font assuming it's locally installed or linked elsewhere */
+  font-family: 'Milker', sans-serif; 
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.custom-marquee-content span {
+  padding-right: 50px; /* Space between repeated text */
+}
+
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout | Ashif Builds</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Beautiful CSS Design & Animations, Boss! */
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #f0f3fa 0%, #e5e9f5 100%); 
+            padding: 20px; 
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        
+        .checkout-box { 
+            background: white; 
+            width: 100%;
+            max-width: 480px; 
+            padding: 40px 30px; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15); 
+            animation: slideUpFade 0.6s ease-out;
+        }
+
+        /* --- NEW BRANDING SECTION STYLES --- */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #e2e8f0;
+        }
+        
+        .brand-logo {
+            max-width: 160px; 
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .brand-name {
+            margin: 0;
+            color: #1a1a1a;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* The smooth entry animation */
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .checkout-box h2 { 
+            margin: 0 0 25px 0; 
+            color: #4a5568; 
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label { 
+            font-weight: 600; 
+            font-size: 13px; 
+            color: #4a5568; 
+            display: block; 
+            margin-bottom: 8px; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input, select { 
+            width: 100%; 
+            padding: 14px; 
+            border: 2px solid #e2e8f0; 
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #8b5cf6;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+        }
+
+        /* The Magic Coupon Box gets special styling */
+        .coupon-group input {
+            border-style: dashed;
+            border-color: #a78bfa;
+            background-color: #f5f3ff;
+            font-weight: 600;
+            color: #5b21b6;
+        }
+        
+        .coupon-group input:focus {
+            border-style: solid;
+        }
+
+        .btn-pay { 
+            background: #8b5cf6; 
+            color: white; 
+            width: 100%; 
+            padding: 16px; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            font-weight: 700; 
+            margin-top: 15px; 
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-pay:hover { 
+            background: #7c3aed; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+        }
+
+        .btn-pay:active {
+            transform: translateY(0);
+        }
+        
+        .secure-badge {
+            text-align: center;
+            font-size: 12px;
+            color: #718096;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* --- COUPON CARD STYLING (GREEN THEME) --- */
+        .active-coupons-container {
+            width: 100%;
+            margin-top: 30px; /* Spacing below the form/badge */
+            padding-top: 20px;
+            border-top: 1px dashed #e2e8f0;
+        }
+
+        .section-heading {
+            font-size: 1rem;
+            color: #282c3f;
+            margin-top: 0;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .ecommerce-coupon-card {
+            display: flex;
+            background: #ffffff;
+            border: 1px solid #eaeaec;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+
+        .ecommerce-coupon-card:hover {
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Left Side - Discount Highlight (Green Theme) */
+        .coupon-left {
+            background: #ecfdf5; /* Soft emerald background */
+            color: #059669; /* Premium emerald green */
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px dashed #a7f3d0;
+            min-width: 70px;
+        }
+
+        .discount-value {
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* Right Side - Details */
+        .coupon-right {
+            padding: 15px;
+            flex: 1;
+        }
+
+        .coupon-code-box {
+            display: inline-block;
+            border: 1px dashed #535766;
+            padding: 4px 10px;
+            background: #f4f4f5;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .the-code {
+            font-weight: bold;
+            color: #282c3f;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .copy-text {
+            font-size: 0.75rem;
+            color: #059669; /* Green to match the theme */
+            margin-left: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .coupon-desc {
+            font-size: 0.85rem;
+            color: #535766;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Pop-up Toast for "Copied!" */
+        .copy-success-toast {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(40, 44, 63, 0.95);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-weight: bold;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+<div class="checkout-box">
+    
+    <div class="brand-header">
+        <img src="/img/logo.jpg" alt="Business Logo" class="brand-logo">
+        <h1 class="brand-name">ASHIF BUILDS</h1>
+    </div>
+
+    <h2>Complete Your Order</h2>
+    
+    <div class="input-group">
+        <label>Select Your Package</label>
+        <select id="planSelect" required>
+            <option value="" disabled selected>-- Choose a service --</option>
+            <option value="student">Job Seekers & Students (₹999)</option>
+            <option value="localbiz">Local Biz & Startups (₹4,999)</option>
+            <option value="social">Social Brands (₹2,999)</option>
+        </select>
+    </div>
+    
+    <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" id="clientName" placeholder="Enter your full name" required>
+    </div>
+    
+    <div class="input-group">
+        <label>WhatsApp Number</label>
+        <input type="tel" id="clientPhone" placeholder="Enter active WhatsApp number" required>
+    </div>
+
+    <div class="input-group">
+        <label>Email Address</label>
+        <input type="email" id="clientEmail" placeholder="Enter your email address" required>
+    </div>
+
+    <div class="input-group coupon-group">
+        <label>Have a Promo Code?</label>
+        <input type="text" id="couponCode" placeholder="Enter secret code (Optional)">
+    </div>
+
+    <button class="btn-pay" onclick="processPayment()">Pay Securely via Paytm</button>
+    
+    <div class="secure-badge">
+        🔒 100% Secure Encrypted Payment
+    </div>
+
+    <div class="active-coupons-container">
+        <h3 class="section-heading">Available Offers</h3>
+
+        <div class="ecommerce-coupon-card" onclick="copyCouponCode('WELCOME20', this)">
+            <div class="coupon-left">
+                <span class="discount-value">20%<br>OFF</span>
+            </div>
+            
+            <div class="coupon-right">
+                <div class="coupon-code-box">
+                    <span class="the-code">WELCOME20</span>
+                    <span class="copy-text">Tap to copy</span>
+                </div>
+                <p class="coupon-desc">This promo code provides a 20% discount on all web development projects.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Copy to clipboard logic
+    function copyCouponCode(code, cardElement) {
+        navigator.clipboard.writeText(code).then(() => {
+            let toast = cardElement.querySelector('.copy-success-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.className = 'copy-success-toast';
+                toast.innerText = 'Code Copied!';
+                cardElement.appendChild(toast);
+            }
+            
+            toast.style.opacity = '1';
+            const copyTextSpan = cardElement.querySelector('.copy-text');
+            const originalText = copyTextSpan.innerText;
+            copyTextSpan.innerText = 'COPIED!';
+            copyTextSpan.style.color = '#047857'; // Darker green on copy 
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                copyTextSpan.innerText = originalText;
+                copyTextSpan.style.color = '#059669'; // Back to normal green
+            }, 2000);
+            
+        }).catch(err => {
+            console.error('Failed to copy, boss: ', err);
+        });
+    }
+
+    // Payment Processing Logic
+    function processPayment() {
+        var payButton = document.querySelector('.btn-pay');
+        payButton.innerText = "Processing... Please wait";
+        payButton.style.backgroundColor = "#7c3aed";
+        payButton.disabled = true;
+
+        var name = document.getElementById("clientName").value.trim();
+        var phone = document.getElementById("clientPhone").value.trim();
+        var email = document.getElementById("clientEmail").value.trim();
+        var plan = document.getElementById("planSelect").value;
+        var code = document.getElementById("couponCode").value.trim().toUpperCase();
+        
+        if (name === "" || phone === "" || email === "") {
+            alert("Please fill in your Name, WhatsApp Number, and Email first, boss!");
+            resetButton(payButton);
+            return; 
+        }
+        
+        if (plan === "") {
+            alert("Please select which package you are buying from the dropdown!");
+            resetButton(payButton);
+            return;
+        }
+
+        var universalPromo = "WELCOME20"; 
+        var finalLink = "";
+        var isInvalidCode = false;
+
+        if (plan === "student") {
+            if (code === universalPromo) { 
+                finalLink = "https://p.ppsl.io/PYTMPS/h11amk"; 
+            } else { 
+                finalLink = "https://p.ppsl.io/PYTMPS/L3Nnmk"; 
+                if (code !== "") isInvalidCode = true;
+            }
+        } 
+        else if (plan === "localbiz") {
+            if (code === universalPromo) { 
+                finalLink = "https://p.ppsl.io/PYTMPS/aG1amk"; // Typo 'Yhttps' fixed here, boss!
+            } else { 
+                finalLink = "https://p.ppsl.io/PYTMPS/1wNnmk"; 
+                if (code !== "") isInvalidCode = true;
+            }
+        } 
+        else if (plan === "social") {
+            if (code === universalPromo) { 
+                finalLink = "https://p.ppsl.io/PYTMPS/9d1amk"; 
+            } else { 
+                finalLink = "https://p.ppsl.io/PYTMPS/5lNnmk"; 
+                if (code !== "") isInvalidCode = true;
+            }
+        }
+
+        if (isInvalidCode) {
+            alert("Invalid promo code. Proceeding with regular price, sir!");
+        }
+        
+        var formData = new FormData();
+        formData.append("Client Name", name);
+        formData.append("WhatsApp Number", phone);
+        formData.append("Email Address", email);
+        formData.append("Selected Package", plan);
+        formData.append("Coupon Used", code || "None");
+
+        fetch("https://formspree.io/f/mredyyvb", {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            window.location.href = finalLink;
+        }).catch(error => {
+            console.error("Formspree error, but continuing to payment:", error);
+            window.location.href = finalLink;
+        });
+    }
+
+    function resetButton(btn) {
+        btn.innerText = "Pay Securely via Paytm";
+        btn.style.backgroundColor = "#8b5cf6";
+        btn.disabled = false;
+    }
+</script>
+
+</body>
+</html>
