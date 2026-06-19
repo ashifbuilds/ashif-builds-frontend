@@ -28,7 +28,6 @@
             animation: slideUpFade 0.6s ease-out;
         }
 
-        /* --- NEW BRANDING SECTION STYLES --- */
         .brand-header {
             text-align: center;
             margin-bottom: 25px;
@@ -50,7 +49,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* The smooth entry animation */
         @keyframes slideUpFade {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -95,7 +93,6 @@
             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
         }
 
-        /* The Magic Coupon Box gets special styling */
         .coupon-group input {
             border-style: dashed;
             border-color: #a78bfa;
@@ -106,6 +103,112 @@
         
         .coupon-group input:focus {
             border-style: solid;
+        }
+
+        /* --- PAYMENT TOGGLE STYLES --- */
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .pay-method-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #4a5568;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pay-method-btn.active {
+            border-color: #8b5cf6;
+            background: #f5f3ff;
+            color: #5b21b6;
+        }
+
+        /* --- UPI QR SECTION --- */
+        .upi-section {
+            display: none;
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: slideUpFade 0.4s ease-out;
+        }
+
+        .qr-code-img {
+            max-width: 180px;
+            margin: 10px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .upi-details {
+            font-size: 14px;
+            color: #4a5568;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .upi-details span {
+            font-weight: bold;
+            color: #1a1a1a;
+            font-size: 16px;
+        }
+
+        .discount-highlight {
+            color: #059669;
+            font-weight: bold;
+            background: #ecfdf5;
+            padding: 6px 12px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 5px 0 15px 0;
+            border: 1px dashed #a7f3d0;
+        }
+
+        /* WARNING DISCLAIMER STYLES */
+        .upi-disclaimer {
+            color: #dc2626;
+            font-size: 12px;
+            font-weight: 700;
+            background: #fef2f2;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #fca5a5;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .sample-toggle {
+            cursor: pointer;
+            color: #2563eb;
+            text-decoration: underline;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .sample-img-box {
+            display: none;
+            margin-top: 10px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 2px solid #cbd5e1;
+        }
+
+        .sample-img-box img {
+            width: 100%;
+            display: block;
         }
 
         .btn-pay { 
@@ -144,10 +247,10 @@
             gap: 5px;
         }
 
-        /* --- COUPON CARD STYLING (GREEN THEME) --- */
+        /* --- COUPON CARD STYLING --- */
         .active-coupons-container {
             width: 100%;
-            margin-top: 30px; /* Spacing below the form/badge */
+            margin-top: 30px; 
             padding-top: 20px;
             border-top: 1px dashed #e2e8f0;
         }
@@ -179,10 +282,9 @@
             transform: translateY(-2px);
         }
 
-        /* Left Side - Discount Highlight (Green Theme) */
         .coupon-left {
-            background: #ecfdf5; /* Soft emerald background */
-            color: #059669; /* Premium emerald green */
+            background: #ecfdf5; 
+            color: #059669; 
             padding: 15px;
             display: flex;
             align-items: center;
@@ -198,7 +300,6 @@
             line-height: 1.2;
         }
 
-        /* Right Side - Details */
         .coupon-right {
             padding: 15px;
             flex: 1;
@@ -222,7 +323,7 @@
 
         .copy-text {
             font-size: 0.75rem;
-            color: #059669; /* Green to match the theme */
+            color: #059669; 
             margin-left: 10px;
             font-weight: bold;
             text-transform: uppercase;
@@ -235,7 +336,6 @@
             line-height: 1.4;
         }
 
-        /* Pop-up Toast for "Copied!" */
         .copy-success-toast {
             position: absolute;
             top: 50%;
@@ -267,7 +367,7 @@
     
     <div class="input-group">
         <label>Select Your Package</label>
-        <select id="planSelect" required>
+        <select id="planSelect" required onchange="updateUpiMath()">
             <option value="" disabled selected>-- Choose a service --</option>
             <option value="student">Job Seekers & Students (₹999)</option>
             <option value="localbiz">Local Biz & Startups (₹4,999)</option>
@@ -292,10 +392,75 @@
 
     <div class="input-group coupon-group">
         <label>Have a Promo Code?</label>
-        <input type="text" id="couponCode" placeholder="Enter secret code (Optional)">
+        <!-- Adding oninput to dynamically calculate the 20% discount if UPI tab is open -->
+        <input type="text" id="couponCode" placeholder="Enter secret code (Optional)" oninput="updateUpiMath()">
     </div>
 
-    <button class="btn-pay" onclick="processPayment()">Pay Securely via Paytm</button>
+    <!-- PAYMENT SELECTION SECTION -->
+    <label>Choose Payment Method</label>
+    <div class="payment-methods">
+        <button class="pay-method-btn active" id="btnPaytm" onclick="selectPaymentMethod('paytm')">Paytm Link</button>
+        <button class="pay-method-btn" id="btnUpi" onclick="selectPaymentMethod('upi')">UPI QR Code</button>
+    </div>
+
+    <!-- UPI SECRETS SECTION -->
+    <div class="upi-section" id="upiSection">
+        <div class="discount-highlight">🎉 UPI Offer Applied! Enjoy up to ₹10 Off!</div>
+        
+        <!-- PUT YOUR ACTUAL QR CODE IMAGE LINK HERE -->
+        <img src="/img/paytmqr.jpeg" alt="UPI QR Code" class="qr-code-img">
+           <div class="ecommerce-coupon-card" style="padding: 15px; justify-content: center; align-items: center;" onclick="copyUpiId('ashifreja026@ptyes', this)">
+    <div class="coupon-code-box" style="margin-bottom: 0; border-color: #8b5cf6; background: #f5f3ff;">
+        <span class="the-code" style="color: #5b21b6;">ashifreja026@ptyes</span>
+        <span class="copy-text" style="color: #8b5cf6;">Tap to copy</span>
+    </div>
+</div>
+        <p class="upi-details">
+            Scan with any UPI App (GPay, PhonePe, Paytm)<br>
+            Order ID: <span id="displayOrderId">------</span><br>
+        </p>
+
+        <!-- DISCLAIMER & SAMPLE ICON -->
+        <div class="upi-disclaimer">
+            <span>⚠️ IMPORTANT: You MUST type this exact Order ID in the 'Add Note' or 'Comments' section when paying on your UPI app!</span>
+            <span class="sample-toggle" onclick="toggleSample()">📸 View Sample</span>
+            <div class="sample-img-box" id="sampleBox">
+                <!-- PUT YOUR SAMPLE SCREENSHOT IMAGE HERE -->
+                <img src="/img/sample.jpeg" alt="Sample Note Entry">
+            </div>
+        </div>
+
+        <!-- Pricing Breakdown -->
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px; margin: 15px 0; text-align: left;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>Base Price:</span> 
+                <span id="displayBasePrice" style="font-weight: 600;">₹0.00</span>
+            </div>
+            
+            <!-- Hidden by default unless promo used -->
+            <div id="promoRow" style="display: none; justify-content: space-between; margin-bottom: 5px; color: #d97706;">
+                <span>Promo Code (20%):</span> 
+                <span id="displayPromoDiscount" style="font-weight: 600;">- ₹0.00</span>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px; color: #059669;">
+                <span>Lucky Discount:</span> 
+                <span id="displayDiscount" style="font-weight: 600;">- ₹0.00</span>
+            </div>
+            <hr style="border: 0; border-top: 1px dashed #cbd5e1; margin: 8px 0;">
+            <div style="display: flex; justify-content: space-between; font-size: 16px; color: #e11d48; font-weight: 700;">
+                <span>Pay Exactly:</span> 
+                <span id="displayFinalAmount">₹0.00</span>
+            </div>
+        </div>
+        
+        <div class="input-group" style="margin-top: 15px; text-align: left;">
+            <label>Enter UTR / Reference Number *</label>
+            <input type="text" id="utrNumber" placeholder="e.g. 312345678910" style="border-color: #cbd5e1;">
+        </div>
+    </div>
+
+    <button class="btn-pay" id="mainPayButton" onclick="processPayment()">Pay Securely via Paytm</button>
     
     <div class="secure-badge">
         🔒 100% Secure Encrypted Payment
@@ -321,14 +486,14 @@
 </div>
 
 <script>
-    // Copy to clipboard logic
-    function copyCouponCode(code, cardElement) {
-        navigator.clipboard.writeText(code).then(() => {
+    // Special function ONLY for copying the UPI ID, Boss! No auto-filling!
+    function copyUpiId(text, cardElement) {
+        navigator.clipboard.writeText(text).then(() => {
             let toast = cardElement.querySelector('.copy-success-toast');
             if (!toast) {
                 toast = document.createElement('div');
                 toast.className = 'copy-success-toast';
-                toast.innerText = 'Code Copied!';
+                toast.innerText = 'UPI ID Copied!';
                 cardElement.appendChild(toast);
             }
             
@@ -336,100 +501,249 @@
             const copyTextSpan = cardElement.querySelector('.copy-text');
             const originalText = copyTextSpan.innerText;
             copyTextSpan.innerText = 'COPIED!';
-            copyTextSpan.style.color = '#047857'; // Darker green on copy 
+            copyTextSpan.style.color = '#5b21b6'; // Dark purple on copy
             
             setTimeout(() => {
                 toast.style.opacity = '0';
                 copyTextSpan.innerText = originalText;
-                copyTextSpan.style.color = '#059669'; // Back to normal green
-            }, 2000);
+                copyTextSpan.style.color = '#8b5cf6'; // Back to normal purple
+            }, 2500);
+            
+        }).catch(err => {
+            console.error('Failed to copy UPI ID, boss: ', err);
+        });
+    }
+    // Global Variables for logic
+    let currentPaymentMethod = 'paytm';
+    let generatedOrderId = '';
+    let generatedDiscountValue = 0; 
+    let finalAmountGlobal = 0;
+
+    const planPrices = {
+        "student": 999,
+        "localbiz": 4999,
+        "social": 2999
+    };
+
+    // Toggle the sample screenshot
+    function toggleSample() {
+        var box = document.getElementById("sampleBox");
+        if (box.style.display === "none" || box.style.display === "") {
+            box.style.display = "block";
+        } else {
+            box.style.display = "none";
+        }
+    }
+
+    // Advanced ID Generator: Mixed Capital, Small, and Numbers
+    function generateMixedOrderId() {
+        const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let result = '';
+        for (let i = 0; i < 6; i++) {
+            result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result; // Looks like: aB9xY2
+    }
+
+    // Copy to clipboard logic
+    function copyCouponCode(code, cardElement) {
+        navigator.clipboard.writeText(code).then(() => {
+            // Also auto-fill the coupon code input for the customer
+            document.getElementById('couponCode').value = code;
+            updateUpiMath(); // Immediately calculate the new discount if UPI is open
+            
+            let toast = cardElement.querySelector('.copy-success-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.className = 'copy-success-toast';
+                toast.innerText = 'Code Copied & Applied!';
+                cardElement.appendChild(toast);
+            }
+            
+            toast.style.opacity = '1';
+            const copyTextSpan = cardElement.querySelector('.copy-text');
+            const originalText = copyTextSpan.innerText;
+            copyTextSpan.innerText = 'APPLIED!';
+            copyTextSpan.style.color = '#047857'; 
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                copyTextSpan.innerText = originalText;
+                copyTextSpan.style.color = '#059669'; 
+            }, 2500);
             
         }).catch(err => {
             console.error('Failed to copy, boss: ', err);
         });
     }
 
-    // Payment Processing Logic
-    function processPayment() {
-        var payButton = document.querySelector('.btn-pay');
-        payButton.innerText = "Processing... Please wait";
-        payButton.style.backgroundColor = "#7c3aed";
-        payButton.disabled = true;
+    // Calculates the bill dynamically
+    function updateUpiMath() {
+        if (currentPaymentMethod !== 'upi') return; // Only run if UPI is selected
 
+        var plan = document.getElementById("planSelect").value;
+        if (plan === "") return;
+
+        let basePrice = planPrices[plan];
+        let promoInput = document.getElementById("couponCode").value.trim().toUpperCase();
+        let promoDeduction = 0;
+
+        // Apply 20% discount if code matches
+        if (promoInput === "WELCOME20") {
+            promoDeduction = basePrice * 0.20;
+            document.getElementById('promoRow').style.display = 'flex';
+            document.getElementById('displayPromoDiscount').innerText = "- ₹" + promoDeduction.toFixed(2);
+        } else {
+            document.getElementById('promoRow').style.display = 'none';
+        }
+
+        let priceAfterPromo = basePrice - promoDeduction;
+        finalAmountGlobal = (priceAfterPromo - generatedDiscountValue).toFixed(2);
+
+        document.getElementById('displayBasePrice').innerText = "₹" + basePrice.toFixed(2);
+        document.getElementById('displayDiscount').innerText = "- ₹" + generatedDiscountValue.toFixed(2);
+        document.getElementById('displayFinalAmount').innerText = "₹" + finalAmountGlobal;
+    }
+
+    // Toggle between Paytm and UPI
+    function selectPaymentMethod(method) {
+        var plan = document.getElementById("planSelect").value;
+        const btnPaytm = document.getElementById('btnPaytm');
+        const btnUpi = document.getElementById('btnUpi');
+        const upiSection = document.getElementById('upiSection');
+        const mainPayButton = document.getElementById('mainPayButton');
+
+        if (method === 'upi') {
+            if (plan === "") {
+                alert("Sir, please select your package first so I can calculate your total discount!");
+                document.getElementById("planSelect").focus();
+                return;
+            }
+
+            currentPaymentMethod = method;
+            btnUpi.classList.add('active');
+            btnPaytm.classList.remove('active');
+            upiSection.style.display = 'block';
+            mainPayButton.innerText = "Submit UTR & Complete Order";
+            
+            // Generate Order ID (Mixed case) and random discount strictly up to 2 Rs max
+            if (!generatedOrderId) {
+                generatedOrderId = generateMixedOrderId();
+                document.getElementById('displayOrderId').innerText = generatedOrderId;
+                
+                let randomAmount = (Math.random() * 2).toFixed(2);
+                generatedDiscountValue = parseFloat(randomAmount);
+            }
+
+            // Calculate the math based on plan and promo box
+            updateUpiMath();
+
+        } else {
+            currentPaymentMethod = 'paytm';
+            btnPaytm.classList.add('active');
+            btnUpi.classList.remove('active');
+            upiSection.style.display = 'none';
+            mainPayButton.innerText = "Pay Securely via Paytm";
+        }
+    }
+
+    // Payment Processing & Formspree Logic
+    function processPayment() {
         var name = document.getElementById("clientName").value.trim();
         var phone = document.getElementById("clientPhone").value.trim();
         var email = document.getElementById("clientEmail").value.trim();
         var plan = document.getElementById("planSelect").value;
         var code = document.getElementById("couponCode").value.trim().toUpperCase();
+        var utr = document.getElementById("utrNumber").value.trim();
         
         if (name === "" || phone === "" || email === "") {
             alert("Please fill in your Name, WhatsApp Number, and Email first, boss!");
-            resetButton(payButton);
             return; 
         }
         
         if (plan === "") {
             alert("Please select which package you are buying from the dropdown!");
-            resetButton(payButton);
             return;
         }
+
+        if (currentPaymentMethod === 'upi' && utr === "") {
+            alert("Sir, please enter the UTR / Payment Reference Number so we can verify your payment!");
+            return;
+        }
+
+        var payButton = document.getElementById('mainPayButton');
+        payButton.innerText = "Processing... Please wait";
+        payButton.style.backgroundColor = "#7c3aed";
+        payButton.disabled = true;
 
         var universalPromo = "WELCOME20"; 
         var finalLink = "";
         var isInvalidCode = false;
 
-        if (plan === "student") {
-            if (code === universalPromo) { 
-                finalLink = "https://p.ppsl.io/PYTMPS/h11amk"; 
-            } else { 
-                finalLink = "https://p.ppsl.io/PYTMPS/L3Nnmk"; 
-                if (code !== "") isInvalidCode = true;
+        // Route Paytm Links
+        if (currentPaymentMethod === 'paytm') {
+            if (plan === "student") {
+                if (code === universalPromo) { finalLink = "https://p.ppsl.io/PYTMPS/h11amk"; } 
+                else { finalLink = "https://p.ppsl.io/PYTMPS/L3Nnmk"; if (code !== "") isInvalidCode = true; }
+            } 
+            else if (plan === "localbiz") {
+                if (code === universalPromo) { finalLink = "https://p.ppsl.io/PYTMPS/aG1amk"; } 
+                else { finalLink = "https://p.ppsl.io/PYTMPS/1wNnmk"; if (code !== "") isInvalidCode = true; }
+            } 
+            else if (plan === "social") {
+                if (code === universalPromo) { finalLink = "https://p.ppsl.io/PYTMPS/9d1amk"; } 
+                else { finalLink = "https://p.ppsl.io/PYTMPS/5lNnmk"; if (code !== "") isInvalidCode = true; }
             }
-        } 
-        else if (plan === "localbiz") {
-            if (code === universalPromo) { 
-                finalLink = "https://p.ppsl.io/PYTMPS/aG1amk"; // Typo 'Yhttps' fixed here, boss!
-            } else { 
-                finalLink = "https://p.ppsl.io/PYTMPS/1wNnmk"; 
-                if (code !== "") isInvalidCode = true;
-            }
-        } 
-        else if (plan === "social") {
-            if (code === universalPromo) { 
-                finalLink = "https://p.ppsl.io/PYTMPS/9d1amk"; 
-            } else { 
-                finalLink = "https://p.ppsl.io/PYTMPS/5lNnmk"; 
-                if (code !== "") isInvalidCode = true;
+
+            if (isInvalidCode) {
+                alert("Invalid promo code. Proceeding with regular price, sir!");
             }
         }
 
-        if (isInvalidCode) {
-            alert("Invalid promo code. Proceeding with regular price, sir!");
-        }
-        
+        // Setup Formspree Data
         var formData = new FormData();
         formData.append("Client Name", name);
         formData.append("WhatsApp Number", phone);
         formData.append("Email Address", email);
         formData.append("Selected Package", plan);
         formData.append("Coupon Used", code || "None");
+        formData.append("Payment Method", currentPaymentMethod.toUpperCase());
+        
+        if (currentPaymentMethod === 'upi') {
+            formData.append("Order ID", generatedOrderId);
+            formData.append("Lucky Discount Applied", "₹" + generatedDiscountValue.toFixed(2));
+            formData.append("Amount Customer Was Told To Pay", "₹" + finalAmountGlobal);
+            formData.append("UTR Reference", utr);
+        }
 
-        fetch("https://formspree.io/f/mredyyvb", {
+        // Submit to Formspree
+       // Submit to Formspree
+        fetch("https://formspree.io/f/xzdqnpaz", {
             method: "POST",
             body: formData,
             headers: {
                 'Accept': 'application/json'
             }
         }).then(response => {
-            window.location.href = finalLink;
+            if (currentPaymentMethod === 'paytm') {
+                window.location.href = finalLink;
+            } else {
+                alert("Payment details submitted successfully! We are verifying your UTR and will process your order shortly.We will send your confirmation email as soon as your payment is processed. Thank you for choosing Ashif Builds.");
+                window.location.href = "/"; // This will redirect them to your main home page!
+            }
         }).catch(error => {
-            console.error("Formspree error, but continuing to payment:", error);
-            window.location.href = finalLink;
+            console.error("Formspree error, boss:", error);
+            if (currentPaymentMethod === 'paytm') {
+                window.location.href = finalLink;
+            } else {
+                alert("There was a network issue, please try again.");
+                resetButton(payButton, currentPaymentMethod);
+            }
         });
     }
 
-    function resetButton(btn) {
-        btn.innerText = "Pay Securely via Paytm";
+    function resetButton(btn, method) {
+        btn.innerText = method === 'upi' ? "Submit UTR & Complete Order" : "Pay Securely via Paytm";
         btn.style.backgroundColor = "#8b5cf6";
         btn.disabled = false;
     }
