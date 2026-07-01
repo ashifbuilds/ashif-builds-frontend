@@ -306,6 +306,284 @@
 
       </div>
     </div>
+
+<!-- ========================================== -->
+<!-- ASHIF BUILDS E-COMMERCE MEGA SECTION START -->
+<!-- ========================================== -->
+<style>
+  /* E-Commerce Section Custom Styles */
+  .ecom-section {
+    padding: 5rem 0;
+    background: transparent;
+  }
+  /* Force the Why Choose Us cards into a responsive grid */
+  .industries-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 40px !important;
+    max-width: 1200px !important;
+    margin: 0 auto 5rem auto !important;
+    padding: 0 20px;
+  }
+  
+  /* Center the contents of each card to make it look premium */
+  .industry-card {
+    text-align: center !important;
+    padding: 20px;
+  }
+  
+  /* Center the purple icon boxes */
+  .industry-card .icon-box {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto 20px auto !important;
+  }
+  /* Platform Split Cards */
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 4rem auto;
+    padding: 0 20px;
+  }
+  .platform-card {
+    background: #1a1a2e;
+    border: 1px solid rgba(147, 51, 234, 0.2);
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .platform-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(147, 51, 234, 0.15);
+  }
+  .platform-icon {
+    font-size: 40px;
+    color: #a881e6;
+  }
+  
+  /* Process Steps */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto 5rem auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  .process-step .step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #a881e6 0%, #6317b3 100%);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 5px 15px rgba(99, 23, 179, 0.4);
+  }
+  
+  /* FAQ Accordion (Pure HTML/CSS Jugaad!) */
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .faq-item {
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
+  .faq-item details {
+    width: 100%;
+  }
+  .faq-item summary {
+    padding: 20px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-item summary::after {
+    content: '+';
+    color: #a881e6;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+  }
+  .faq-item details[open] summary::after {
+    content: '-';
+    transform: rotate(180deg);
+  }
+  .faq-item .faq-answer {
+    padding: 0 20px 20px 20px;
+    color: #a0aec0;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+</style>
+
+<section class="ecom-section">
+  <!-- 1. Why Choose Us Header -->
+  <div class="glass-section-header" style="margin-bottom: 3rem;">
+    <h2 class="featured-title" style="margin-bottom: 0.5rem;">
+      PREMIUM <span class="theme-purple-heading">E-COMMERCE</span> SETUP
+    </h2>
+    <p class="featured-subtitle">
+      Why choose Ashif Builds for your online store? We build digital storefronts that load fast, look stunning, and actually convert visitors into paying customers.
+    </p>
+  </div>
+
+  <!-- Why Choose Us Grid (Using your existing industry-card styles for perfect matching) -->
+  <div class="industries-grid" style="margin-bottom: 5rem;">
+    <div class="industry-card">
+      <div class="icon-box"><i class="fa-solid fa-cart-arrow-down"></i></div>
+      <h3 class="card-title">Built for Sales</h3>
+      <p class="card-desc">We design user journeys focused entirely on high conversion rates and maximum ROI. No confusing layouts.</p>
+    </div>
+    <div class="industry-card">
+      <div class="icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
+      <h3 class="card-title">100% Mobile-First</h3>
+      <p class="card-desc">Over 70% of buyers shop on their phones. Our stores are fully responsive and look flawless on all mobile devices.</p>
+    </div>
+    <div class="industry-card">
+      <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+      <h3 class="card-title">Secure & Safe</h3>
+      <p class="card-desc">Integrated with top payment gateways (Razorpay, Stripe) with tight security to protect your customer data.</p>
+    </div>
+    <div class="industry-card">
+      <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+      <h3 class="card-title">Lightning Fast</h3>
+      <p class="card-desc">Optimized code and light asset delivery ensure your e-commerce site loads in milliseconds, keeping bounce rates low.</p>
+    </div>
+    <div class="industry-card">
+      <div class="icon-box"><i class="fa-solid fa-plug"></i></div>
+      <h3 class="card-title">Seamless Integrations</h3>
+      <p class="card-desc">Easily connect your CRM, inventory management, and marketing tools directly into your digital storefront.</p>
+    </div>
+    <div class="industry-card">
+      <div class="icon-box"><i class="fa-solid fa-headset"></i></div>
+      <h3 class="card-title">Direct 1-on-1 Support</h3>
+      <p class="card-desc">No slow email tickets. You get my personal WhatsApp support for any technical issues after your launch.</p>
+    </div>
+  </div>
+
+  <!-- 2. Platforms Section -->
+  <div class="glass-section-header" style="margin-bottom: 3rem;">
+    <h2 class="featured-title" style="margin-bottom: 0.5rem;">
+      OUR <span class="theme-purple-heading">PLATFORMS</span>
+    </h2>
+  </div>
+  
+  <div class="platform-grid">
+    <div class="platform-card">
+      <div class="platform-icon"><i class="fa-brands fa-wordpress"></i></div>
+      <div>
+        <h3 style="color: white; font-size: 20px; margin-bottom: 5px;">WooCommerce Power</h3>
+        <p style="color: #a0aec0; font-size: 14px; margin: 0;">Perfect for extreme flexibility and 100% ownership. Feature-rich stores with zero monthly platform fees.</p>
+      </div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon"><i class="fa-brands fa-shopify"></i></div>
+      <div>
+        <h3 style="color: white; font-size: 20px; margin-bottom: 5px;">Shopify Development</h3>
+        <p style="color: #a0aec0; font-size: 14px; margin: 0;">Ideal for a completely hosted, hassle-free experience. We build stunning custom Shopify themes tailored to your brand.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Process Section -->
+  <div class="glass-section-header" style="margin-bottom: 3rem;">
+    <h2 class="featured-title" style="margin-bottom: 0.5rem;">
+      THE <span class="theme-purple-heading">PROCESS</span>
+    </h2>
+  </div>
+
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <h3 style="color: rgb(0, 0, 0); font-size: 18px; margin-bottom: 10px;">Blueprint & Strategy</h3>
+      <p style="color: #a0aec0; font-size: 14px;">We analyze your products, target audience, and business goals to map out the perfect user journey.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <h3 style="color: rgb(0, 0, 0); font-size: 18px; margin-bottom: 10px;">Design & Build</h3>
+      <p style="color: #a0aec0; font-size: 14px;">We craft stunning, conversion-focused designs and develop a secure, fast-loading digital store.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <h3 style="color: rgb(0, 0, 0); font-size: 18px; margin-bottom: 10px;">Testing & Go Live</h3>
+      <p style="color: #a0aec0; font-size: 14px;">We strictly test payment gateways and mobile responsiveness before handing you the keys to your new business.</p>
+    </div>
+  </div>
+
+  <!-- 4. FAQ Section -->
+  <div class="glass-section-header" style="margin-bottom: 3rem;">
+    <h2 class="featured-title" style="margin-bottom: 0.5rem;">
+      COMMON <span class="theme-purple-heading">QUESTIONS</span>
+    </h2>
+  </div>
+
+  <div class="faq-container">
+    
+    <div class="faq-item">
+      <details>
+        <summary>Which is better: Shopify or WooCommerce?</summary>
+        <div class="faq-answer">It depends on your business model! Shopify is amazing for quick setups and ease of use. WooCommerce offers unmatched customizability without monthly fees. We evaluate your needs and suggest the best fit.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>How much does an e-commerce website cost?</summary>
+        <div class="faq-answer">Pricing varies based on features, number of products, and complexity. We have highly affordable starting packages for small businesses, while custom multi-vendor setups cost a bit more. Contact us for a precise quote!</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>How long does it take to launch my store?</summary>
+        <div class="faq-answer">A standard store takes about 2 to 4 weeks from design to final launch. Heavier multi-vendor setups may take a bit longer depending on the functionality required.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>Do you integrate payment gateways?</summary>
+        <div class="faq-answer">Absolutely. We integrate all major, secure Indian and Global payment gateways including Razorpay, PhonePe, Stripe, and PayPal so you can collect money effortlessly.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>Will I be able to manage the store myself?</summary>
+        <div class="faq-answer">Yes! We build simple admin panels. Post-launch, we provide basic training on how to add/edit products, manage inventory, and check your sales analytics without touching a single line of code.</div>
+      </details>
+    </div>
+
+  </div>
+</section>
+<!-- ========================================== -->
+<!-- ASHIF BUILDS E-COMMERCE MEGA SECTION END -->
+<!-- ========================================== -->
+
       <!-- Section - Inner Page Headline Start -->
       <div class="mxd-section mxd-section-inner-headline padding-s-headline-pre-grid">
         

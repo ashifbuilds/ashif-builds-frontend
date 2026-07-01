@@ -378,9 +378,9 @@
         <label>Select Your Package</label>
         <select id="planSelect" required onchange="updateUpiMath()">
             <option value="" disabled selected>-- Choose a service --</option>
-            <option value="student">Job Seekers & Students (₹999)</option>
-            <option value="localbiz">Local Biz & Startups (₹4,999)</option>
-            <option value="social">Social Brands (₹2,999)</option>
+            <option value="student">Job Seekers & Students (₹2,000)</option>
+            <option value="localbiz">Local Biz & Startups (₹14,999)</option>
+            <option value="social">Social Brands (₹5,999)</option>
         </select>
     </div>
     
@@ -401,7 +401,6 @@
 
     <div class="input-group coupon-group">
         <label>Have a Promo Code?</label>
-        <!-- Adding oninput to dynamically calculate the 20% discount if UPI tab is open -->
         <input type="text" id="couponCode" placeholder="Enter secret code (Optional)" oninput="updateUpiMath()">
     </div>
 
@@ -416,14 +415,13 @@
     <div class="upi-section" id="upiSection">
         <div class="discount-highlight">🎉 UPI Offer Applied! Enjoy up to ₹10 Off!</div>
         
-        <!-- PUT YOUR ACTUAL QR CODE IMAGE LINK HERE -->
         <img src="/img/paytmqr.jpeg" alt="UPI QR Code" class="qr-code-img">
-           <div class="ecommerce-coupon-card" style="padding: 15px; justify-content: center; align-items: center;" onclick="copyUpiId('ashifreja026@ptyes', this)">
-    <div class="coupon-code-box" style="margin-bottom: 0; border-color: #8b5cf6; background: #f5f3ff;">
-        <span class="the-code" style="color: #5b21b6;">ashifreja026@ptyes</span>
-        <span class="copy-text" style="color: #8b5cf6;">Tap to copy</span>
-    </div>
-</div>
+        <div class="ecommerce-coupon-card" style="padding: 15px; justify-content: center; align-items: center;" onclick="copyUpiId('ashifreja026@ptyes', this)">
+            <div class="coupon-code-box" style="margin-bottom: 0; border-color: #8b5cf6; background: #f5f3ff;">
+                <span class="the-code" style="color: #5b21b6;">ashifreja026@ptyes</span>
+                <span class="copy-text" style="color: #8b5cf6;">Tap to copy</span>
+            </div>
+        </div>
         <p class="upi-details">
             Scan with any UPI App (GPay, PhonePe, Paytm)<br>
             Order ID: <span id="displayOrderId">------</span><br>
@@ -434,7 +432,6 @@
             <span>⚠️ IMPORTANT: You MUST type this exact Order ID in the 'Add Note' or 'Comments' section when paying on your UPI app!</span>
             <span class="sample-toggle" onclick="toggleSample()">📸 View Sample</span>
             <div class="sample-img-box" id="sampleBox">
-                <!-- PUT YOUR SAMPLE SCREENSHOT IMAGE HERE -->
                 <img src="/img/sample.jpeg" alt="Sample Note Entry">
             </div>
         </div>
@@ -446,7 +443,6 @@
                 <span id="displayBasePrice" style="font-weight: 600;">₹0.00</span>
             </div>
             
-            <!-- Hidden by default unless promo used -->
             <div id="promoRow" style="display: none; justify-content: space-between; margin-bottom: 5px; color: #d97706;">
                 <span>Promo Code (20%):</span> 
                 <span id="displayPromoDiscount" style="font-weight: 600;">- ₹0.00</span>
@@ -495,7 +491,6 @@
 </div>
 
 <script>
-    // Special function ONLY for copying the UPI ID, Boss! No auto-filling!
     function copyUpiId(text, cardElement) {
         navigator.clipboard.writeText(text).then(() => {
             let toast = cardElement.querySelector('.copy-success-toast');
@@ -510,31 +505,31 @@
             const copyTextSpan = cardElement.querySelector('.copy-text');
             const originalText = copyTextSpan.innerText;
             copyTextSpan.innerText = 'COPIED!';
-            copyTextSpan.style.color = '#5b21b6'; // Dark purple on copy
+            copyTextSpan.style.color = '#5b21b6';
             
             setTimeout(() => {
                 toast.style.opacity = '0';
                 copyTextSpan.innerText = originalText;
-                copyTextSpan.style.color = '#8b5cf6'; // Back to normal purple
+                copyTextSpan.style.color = '#8b5cf6';
             }, 2500);
             
         }).catch(err => {
             console.error('Failed to copy UPI ID, boss: ', err);
         });
     }
-    // Global Variables for logic
+
     let currentPaymentMethod = 'paytm';
     let generatedOrderId = '';
     let generatedDiscountValue = 0; 
     let finalAmountGlobal = 0;
 
+    // Updated pricing metrics globally
     const planPrices = {
-        "student": 999,
-        "localbiz": 4999,
-        "social": 2999
+        "student": 2000,
+        "localbiz": 14999,
+        "social": 5999
     };
 
-    // Toggle the sample screenshot
     function toggleSample() {
         var box = document.getElementById("sampleBox");
         if (box.style.display === "none" || box.style.display === "") {
@@ -544,22 +539,19 @@
         }
     }
 
-    // Advanced ID Generator: Mixed Capital, Small, and Numbers
     function generateMixedOrderId() {
         const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         let result = '';
         for (let i = 0; i < 6; i++) {
             result += chars.charAt(Math.floor(Math.random() * chars.length));
         }
-        return result; // Looks like: aB9xY2
+        return result;
     }
 
-    // Copy to clipboard logic
     function copyCouponCode(code, cardElement) {
         navigator.clipboard.writeText(code).then(() => {
-            // Also auto-fill the coupon code input for the customer
             document.getElementById('couponCode').value = code;
-            updateUpiMath(); // Immediately calculate the new discount if UPI is open
+            updateUpiMath();
             
             let toast = cardElement.querySelector('.copy-success-toast');
             if (!toast) {
@@ -586,9 +578,8 @@
         });
     }
 
-    // Calculates the bill dynamically
     function updateUpiMath() {
-        if (currentPaymentMethod !== 'upi') return; // Only run if UPI is selected
+        if (currentPaymentMethod !== 'upi') return;
 
         var plan = document.getElementById("planSelect").value;
         if (plan === "") return;
@@ -597,7 +588,6 @@
         let promoInput = document.getElementById("couponCode").value.trim().toUpperCase();
         let promoDeduction = 0;
 
-        // Apply 20% discount if code matches
         if (promoInput === "WELCOME20") {
             promoDeduction = basePrice * 0.20;
             document.getElementById('promoRow').style.display = 'flex';
@@ -614,7 +604,6 @@
         document.getElementById('displayFinalAmount').innerText = "₹" + finalAmountGlobal;
     }
 
-    // Toggle between Paytm and UPI
     function selectPaymentMethod(method) {
         var plan = document.getElementById("planSelect").value;
         const btnPaytm = document.getElementById('btnPaytm');
@@ -635,7 +624,6 @@
             upiSection.style.display = 'block';
             mainPayButton.innerText = "Submit UTR & Complete Order";
             
-            // Generate Order ID (Mixed case) and random discount strictly up to 2 Rs max
             if (!generatedOrderId) {
                 generatedOrderId = generateMixedOrderId();
                 document.getElementById('displayOrderId').innerText = generatedOrderId;
@@ -644,7 +632,6 @@
                 generatedDiscountValue = parseFloat(randomAmount);
             }
 
-            // Calculate the math based on plan and promo box
             updateUpiMath();
 
         } else {
@@ -656,7 +643,6 @@
         }
     }
 
-    // Payment Processing & Formspree Logic
     function processPayment() {
         var name = document.getElementById("clientName").value.trim();
         var phone = document.getElementById("clientPhone").value.trim();
@@ -689,19 +675,19 @@
         var finalLink = "";
         var isInvalidCode = false;
 
-        // Route Paytm Links
+        // Route using newly updated custom links provided by user
         if (currentPaymentMethod === 'paytm') {
             if (plan === "student") {
-                if (code === universalPromo) { finalLink = "https://p.ppsl.io/PYTMPS/h11amk"; } 
-                else { finalLink = "https://p.ppsl.io/PYTMPS/L3Nnmk"; if (code !== "") isInvalidCode = true; }
+                finalLink = "https://p.ppsl.io/PYTMPS/3q1amk";
+                if (code !== "" && code !== universalPromo) isInvalidCode = true;
             } 
             else if (plan === "localbiz") {
-                if (code === universalPromo) { finalLink = "https://p.ppsl.io/PYTMPS/aG1amk"; } 
-                else { finalLink = "https://p.ppsl.io/PYTMPS/1wNnmk"; if (code !== "") isInvalidCode = true; }
+                finalLink = "https://p.ppsl.io/PYTMPS/Y81amk";
+                if (code !== "" && code !== universalPromo) isInvalidCode = true;
             } 
             else if (plan === "social") {
-                if (code === universalPromo) { finalLink = "https://p.ppsl.io/PYTMPS/9d1amk"; } 
-                else { finalLink = "https://p.ppsl.io/PYTMPS/5lNnmk"; if (code !== "") isInvalidCode = true; }
+                finalLink = "https://p.ppsl.io/PYTMPS/if1amk";
+                if (code !== "" && code !== universalPromo) isInvalidCode = true;
             }
 
             if (isInvalidCode) {
@@ -709,7 +695,6 @@
             }
         }
 
-        // Setup Formspree Data
         var formData = new FormData();
         formData.append("Client Name", name);
         formData.append("WhatsApp Number", phone);
@@ -725,8 +710,6 @@
             formData.append("UTR Reference", utr);
         }
 
-        // Submit to Formspree
-       // Submit to Formspree
         fetch("https://formspree.io/f/xzdqnpaz", {
             method: "POST",
             body: formData,
@@ -738,7 +721,7 @@
                 window.location.href = finalLink;
             } else {
                 alert("Payment details submitted successfully! We are verifying your UTR and will process your order shortly.We will send your confirmation email as soon as your payment is processed. Thank you for choosing Ashif Builds.");
-                window.location.href = "/"; // This will redirect them to your main home page!
+                window.location.href = "/";
             }
         }).catch(error => {
             console.error("Formspree error, boss:", error);
