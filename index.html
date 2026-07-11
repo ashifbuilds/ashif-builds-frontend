@@ -2114,7 +2114,140 @@
 </script>
 
 
+<!-- ========================================= -->
+<!-- Ashif Builds Guarantee Pop-Up - Add Before </body> -->
+<!-- ========================================= -->
 
+<!-- 1. Pop-Up Backdrop Overlay (for a clean dimming effect) -->
+<div id="guarantee-overlay"></div>
+
+<!-- 2. Pop-Up Modal Container -->
+<div id="guarantee-popup">
+    <!-- Close Button -->
+    <button id="close-guarantee" aria-label="Close Pop-Up">&times;</button>
+    <!-- Poster Image (Add your image path here) -->
+    <img src="/img/20percent.png" alt="Ashif Builds Guarantee Poster">
+</div>
+
+<!-- 3. Minimum CSS for "Stunning" and "Minimal" Look -->
+<style>
+    /* Prevent scrolling while pop-up is active */
+    body.popup-active {
+        overflow: hidden;
+    }
+
+    /* Pop-Up Overlay styling */
+    #guarantee-overlay {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.7); /* Subtle light dimming */
+        backdrop-filter: blur(5px); /* Clean glassmorphism effect */
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    /* Pop-Up Modal styling */
+    #guarantee-popup {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(90vw); /* 90% of viewport width */
+        max-width: 900px; /* Maximum size for a stunning look on large screens */
+        background-color: #ffffff; /* Matching white of poster */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Subtle, elegant shadow */
+        border: 2px solid #5BCFD3; /* Subtle light teal border from poster colors */
+        border-radius: 12px;
+        z-index: 1001;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease-out; /* Smooth transition */
+    }
+
+    /* Active state for animation */
+    #guarantee-overlay.active,
+    #guarantee-popup.active {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Styling the image inside the pop-up */
+    #guarantee-popup img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+    }
+
+    /* Minimalist Close Button styling */
+    #close-guarantee {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: #5BCFD3; /* Teal from poster colors */
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%; /* Perfect circle */
+        font-size: 24px;
+        line-height: 35px;
+        text-align: center;
+        cursor: pointer;
+        display: block; /* Important: Make it visible */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    #close-guarantee:hover {
+        background-color: #F89B2B; /* Orange from poster colors on hover */
+        transform: scale(1.05); /* Slight scale on hover */
+    }
+
+    /* Minimalist close symbol inside button */
+    #close-guarantee:before {
+        content: '\00D7'; /* Special 'X' character */
+    }
+</style>
+
+<!-- 4. JavaScript to Handle Pop-Up Display -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const overlay = document.getElementById('guarantee-overlay');
+        const popup = document.getElementById('guarantee-popup');
+        const closeBtn = document.getElementById('close-guarantee');
+
+        // Function to hide the pop-up
+        function closePopup() {
+            overlay.classList.remove('active');
+            popup.classList.remove('active');
+            document.body.classList.remove('popup-active');
+        }
+
+        // Show the pop-up with a slight delay
+        setTimeout(function() {
+            overlay.classList.add('active');
+            popup.classList.add('active');
+            document.body.classList.add('popup-active');
+        }, 1000); // 1-second delay for a polished feel
+
+        // Event listener for the close button
+        closeBtn.addEventListener('click', closePopup);
+
+        // Optional: Close pop-up if the user clicks the overlay background
+        overlay.addEventListener('click', closePopup);
+    });
+</script>
+
+<!-- ========================================= -->
+<!-- End Ashif Builds Guarantee Pop-Up -->
+<!-- ========================================= -->
   </body>
 
 </html>
