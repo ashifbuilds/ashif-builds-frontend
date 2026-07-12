@@ -26260,3 +26260,86 @@ div.v-tag.v-c8 { background-color: #10A37F !important; background: #10A37F !impo
   }
 }
 
+/* ====================================================
+   BOSS FIX: MARQUEE GAP REMOVAL
+   ==================================================== */
+
+/* 1. Reduce the massive 120px padding from the wrapper */
+#mxd-page-content > .mxd-section:first-child {
+    padding-top: 80px !important; /* Keeps just enough space for your fixed header */
+}
+
+/* 2. Completely kill the invisible ghost title taking up space */
+.mxd-hero-07__title {
+    display: none !important; 
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+}
+
+/* 3. Squeeze out any remaining empty padding inside the template */
+.mxd-hero-07, 
+.mxd-hero-07__wrap, 
+.mxd-hero-07__top {
+    min-height: auto !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* ====================================================
+   BOSS UPGRADE: PREMIUM BUTTON HOVER ANIMATIONS
+   ==================================================== */
+
+/* 1. Base Setup: Prepare the buttons for smooth animations */
+#hero-24-exclusive .hero-btn-primary,
+#hero-24-exclusive .hero-btn-secondary {
+  position: relative !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+
+/* 2. Create the invisible gradient layers inside the buttons */
+#hero-24-exclusive .hero-btn-primary::before,
+#hero-24-exclusive .hero-btn-secondary::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+  z-index: -1 !important; /* Keeps it behind the text */
+  opacity: 0 !important; /* Hidden by default */
+  transition: opacity 0.4s ease !important; /* Buttery smooth fade */
+  border-radius: 8px !important;
+}
+
+/* 3. Assign the exact gradients from your screenshots */
+#hero-24-exclusive .hero-btn-primary::before {
+  /* Deep Purple to Bright Pink */
+  background: linear-gradient(90deg, #a855f7 0%, #ec4899 100%) !important;
+}
+
+#hero-24-exclusive .hero-btn-secondary::before {
+  /* Vibrant Blue to Magenta */
+  background: linear-gradient(90deg, #6366f1 0%, #d946ef 100%) !important;
+}
+
+/* 4. The Magic Hover Actions! */
+#hero-24-exclusive .hero-btn-primary:hover,
+#hero-24-exclusive .hero-btn-secondary:hover {
+  transform: translateY(-4px) !important; /* Floats up slightly */
+}
+
+/* Fade in the gradients on hover */
+#hero-24-exclusive .hero-btn-primary:hover::before,
+#hero-24-exclusive .hero-btn-secondary:hover::before {
+  opacity: 1 !important;
+}
+
+/* Add matching glowing shadows and hide the border on the secondary button */
+#hero-24-exclusive .hero-btn-primary:hover {
+  box-shadow: 0 15px 25px -5px rgba(236, 72, 153, 0.5) !important;
+}
+
+#hero-24-exclusive .hero-btn-secondary:hover {
+  border-color: transparent !important;
+  box-shadow: 0 15px 25px -5px rgba(139, 92, 246, 0.5) !important;
+}
