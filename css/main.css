@@ -26343,3 +26343,21 @@ div.v-tag.v-c8 { background-color: #10A37F !important; background: #10A37F !impo
   border-color: transparent !important;
   box-shadow: 0 15px 25px -5px rgba(139, 92, 246, 0.5) !important;
 }
+
+.kit-action {
+  text-align: center;
+  margin-top: 25px;
+  position: relative; /* Crucial for z-index to work */
+  z-index: 10;        /* Pulls it to the very front layer */
+}
+
+.premium-kit-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #ff4757; 
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;    /* Forces the mouse cursor to turn into a pointer hand */
+}
