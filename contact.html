@@ -436,7 +436,230 @@
       <h1>Let's Build Something<br><span>Amazing Together</span></h1>
       <p>Get a free consultation from our experts. We'll help you find the perfect solution for your needs.</p>
     </div>
+<!-- REGISTERED ADDRESS SECTION WITH TADKA -->
+<style>
+  /* The Background & Glowing Orbs */
+  .tadka-address-section {
+    padding: 80px 20px;
+    background: radial-gradient(circle at center, #f8fafc 0%, #f1f5f9 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .tadka-address-section::before,
+  .tadka-address-section::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(70px);
+    z-index: 0;
+    animation: floatBlob 10s infinite alternate ease-in-out;
+  }
+  
+  .tadka-address-section::before {
+    background: rgba(147, 51, 234, 0.12); /* Subtle Purple Glow */
+    top: -50px;
+    left: 10%;
+  }
+  
+  .tadka-address-section::after {
+    background: rgba(236, 72, 153, 0.08); /* Subtle Pink Glow */
+    bottom: -50px;
+    right: 10%;
+    animation-delay: -5s;
+  }
+  
+  @keyframes floatBlob {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40px, 40px) scale(1.1); }
+  }
 
+  /* The Main Card */
+  .tadka-card {
+    max-width: 750px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(147, 51, 234, 0.15);
+    border-radius: 24px;
+    padding: 50px 40px;
+    box-shadow: 0 15px 35px rgba(147, 51, 234, 0.06);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  }
+  
+  .tadka-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(147, 51, 234, 0.15);
+    border-color: rgba(147, 51, 234, 0.4);
+  }
+  
+  /* Animated Shimmering Top Border */
+  .tadka-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #9333ea, #ec4899, #9333ea, #4f46e5);
+    background-size: 300% auto;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    animation: shineGradient 4s linear infinite;
+  }
+  
+  @keyframes shineGradient {
+    to { background-position: 300% center; }
+  }
+
+  /* Typography */
+  .tadka-title {
+    font-size: 32px;
+    font-weight: 900;
+    color: #1e293b;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .tadka-title span {
+    background: linear-gradient(135deg, #9333ea, #c026d3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Information Rows with Interactive Icons */
+  .tadka-info-row {
+    margin-bottom: 18px;
+    font-size: 17px;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: color 0.3s ease;
+  }
+  
+  .tadka-info-row:hover {
+    color: #1e293b;
+  }
+  
+  .tadka-info-row strong {
+    color: #1e293b;
+    font-weight: 800;
+  }
+  
+  .tadka-info-icon {
+    color: #9333ea;
+    background: rgba(147, 51, 234, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, color 0.3s ease;
+  }
+  
+  .tadka-info-row:hover .tadka-info-icon {
+    transform: scale(1.15) rotate(5deg);
+    background: #9333ea;
+    color: white;
+    box-shadow: 0 4px 10px rgba(147, 51, 234, 0.3);
+  }
+
+  /* Contact Action Pills */
+  .tadka-contact-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    padding-top: 35px;
+    border-top: 1px dashed rgba(147, 51, 234, 0.3);
+  }
+  
+  .tadka-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 50px;
+    color: #1e293b;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+  }
+  
+  .tadka-pill i {
+    color: #9333ea;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+  }
+  
+  .tadka-pill:hover {
+    border-color: #9333ea;
+    background: #9333ea;
+    color: #ffffff;
+    box-shadow: 0 10px 20px rgba(147, 51, 234, 0.25);
+    transform: translateY(-4px);
+  }
+  
+  .tadka-pill:hover i {
+    color: #ffffff;
+    transform: scale(1.2);
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 600px) {
+    .tadka-card { padding: 40px 20px; }
+    .tadka-title { font-size: 26px; }
+    .tadka-info-row { flex-direction: column; text-align: center; gap: 8px; margin-bottom: 25px; }
+    .tadka-pill { width: 100%; justify-content: center; }
+  }
+</style>
+
+<section class="tadka-address-section">
+  <div class="tadka-card">
+    <h2 class="tadka-title">OUR <span>REGISTERED ADDRESS</span></h2>
+    
+    <div class="tadka-info-row">
+      <span class="tadka-info-icon"><i class="fa-solid fa-building"></i></span>
+      <div><strong>Business Name:</strong> ASHIF BUILDS</div>
+    </div>
+    
+    <div class="tadka-info-row">
+      <span class="tadka-info-icon"><i class="fa-solid fa-user-tie"></i></span>
+      <div><strong>Proprietor:</strong> ASHIF REJA HOSSAIN</div>
+    </div>
+    
+    <div class="tadka-info-row">
+      <span class="tadka-info-icon"><i class="fa-solid fa-map-location-dot"></i></span>
+      <div><strong>Address:</strong> 55/5, DANYA, PANDAVESWAR, PASCHIM BARDHAMAN</div>
+    </div>
+    
+    <div class="tadka-contact-wrap">
+      <a href="mailto:info@ashifbuilds.in" class="tadka-pill">
+        <i class="fa-solid fa-envelope"></i> info@ashifbuilds.in
+      </a>
+      <a href="tel:+917908469371" class="tadka-pill">
+        <i class="fa-solid fa-phone"></i> +91 7908469371
+      </a>
+    </div>
+  </div>
+</section>
+<!-- END REGISTERED ADDRESS SECTION WITH TADKA -->
     <section class="ashif-contact-section" style="width: 100%; display: flex; justify-content: center; padding: 1rem 15px 5rem 15px; margin-bottom: 4rem;">
       <div class="contact-grid-container" style="width: 100%; max-width: 1200px;">
         
@@ -455,6 +678,7 @@
   </div>
   
   <p class="response-time" style="color: #64748b; font-weight: 500;"><i class="ph-regular ph-clock"></i> Average response time: 2 hours</p>
+  
 </div>
 
     <div class="glass-form-card">
@@ -506,6 +730,7 @@
 
 
 </div>
+
 <div class="qr-section-wrapper">
   <h3 class="qr-heading">Scan to Connect</h3>
   
