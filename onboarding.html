@@ -16,24 +16,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <!-- SEO Friendly Title & Meta Tags Boss! -->
-    <title>Careers | Join the Ashif Builds Expert Team</title>
-    <meta name="description" content="Explore careers at Ashif Builds. Join our expert team for exciting WordPress projects, growth opportunities, and fast, reliable project-based payments.">
-    <meta name="keywords" content="careers at Ashif Builds, WordPress developer jobs, remote developer jobs, freelance WordPress, project based jobs India, web development careers">
+    <title>Employee Onboarding | Ashif Builds</title>
+    <meta name="description" content="Secure employee onboarding portal for Ashif Builds team members. Submit your professional, contact, and bank details safely.">
+    <meta name="robots" content="noindex, nofollow"> <!-- Prevents Google from indexing private onboarding page -->
     <meta name="author" content="Ashif Builds">
 
     <!-- Favicon & App Icons -->
     <link rel="icon" href="img/favicon.png" sizes="any">
     <link rel="icon" href="img/favicon.png" type="image/svg+xml">
     <link rel="apple-touch-icon" href="img/favicon.png">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ashifbuilds.in/careers"> 
-    <meta property="og:title" content="Careers at Ashif Builds">
-    <meta property="og:description" content="We are hiring! Remote, project-based roles for WordPress Developers. Fast payouts and a steady monthly project pipeline.">
-    <meta property="og:image" content="https://ashifbuilds.in/img/careers-og.jpg"> 
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630"> 
 
     <!-- Browser Colors & Mobile Web App settings -->
     <meta name="theme-color" content="#1a0629">
@@ -84,36 +75,49 @@
             -webkit-backdrop-filter: blur(20px);
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        
-        .inner-glass-box {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(240, 171, 252, 0.2);
-            border-radius: 12px;
-            padding: 20px;
-        }
 
-        /* List styling for the job details */
-        .job-list li {
-            position: relative;
-            padding-left: 24px;
-            margin-bottom: 12px;
-            color: #d1c4e9;
-            font-size: 0.95rem;
+        /* Form Input Styling */
+        .glass-input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            width: 100%;
+            transition: all 0.3s ease;
         }
-        .job-list li::before {
-            content: '•';
+        .glass-input:focus {
+            outline: none;
+            border-color: #F0ABFC;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 10px rgba(240, 171, 252, 0.2);
+        }
+        .glass-label {
+            display: block;
+            font-size: 0.875rem;
+            color: #d1c4e9;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        
+        /* Sub-section headers */
+        .form-section-title {
             color: #F0ABFC;
-            font-weight: bold;
-            font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: -6px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .form-section-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-left: 10px;
         }
     </style>
-    <link rel="icon" href="img/favicon/favicon.ico" sizes="any">
-    <link rel="icon" href="img/favicon/favicon.ico" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
-    <link rel="manifest" href="img/favicon/manifest.webmanifest">
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -136,7 +140,6 @@
                 <a href="services.html" class="text-lg font-medium text-gray-300 hover:text-white transition-colors">Services</a>
                 <a href="pricing.html" class="text-lg font-medium text-gray-300 hover:text-white transition-colors">Pricing</a>
                 <a href="dashboards.html" class="text-lg font-medium text-gray-300 hover:text-white transition-colors">Data & MIS</a>
-                <a href="referral.html" class="text-lg font-medium text-gray-300 hover:text-white transition-colors">Referral</a>
             </nav>
 
             <a href="contact.html" class="border border-white/20 hover:bg-white/10 px-5 md:px-8 py-2 md:py-3 rounded-full text-sm md:text-lg font-bold uppercase tracking-wider flex items-center gap-2 transition-all">
@@ -152,91 +155,133 @@
         <!-- Hero Section -->
         <div class="w-full bg-purple-gradient pt-16 pb-12 px-6 text-center border-b border-white/10">
             <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
-                Careers at <span class="text-gradient">Ashif Builds</span>
+                Team <span class="text-gradient">Onboarding</span>
             </h1>
             <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-                Explore careers at Ashif Builds. Join our expert team for exciting WordPress projects, growth opportunities, and fast, reliable payments.
+               Welcome to Ashif Builds! Every strong building needs a solid foundation, and so does your onboarding. Please securely fill in your professional, contact, and bank details below to lock in your setup.
             </p>
         </div>
 
-        <div class="max-w-5xl mx-auto px-6 pt-12 md:pt-16 flex flex-col items-center">
+        <div class="max-w-4xl mx-auto px-6 pt-12 md:pt-16">
             
-            <h2 class="text-xl md:text-2xl font-bold text-white mb-8 tracking-wide text-center">
-                Current Opening &middot; Remote &middot; Project-Based
-            </h2>
-
-            <!-- Job Card -->
+            <!-- Form Card -->
             <div class="w-full glass-card p-8 md:p-12 mb-12 shadow-[0_0_40px_rgba(106,17,203,0.1)]">
                 
-                <!-- Job Header -->
-                <div class="text-center border-b border-white/10 pb-8 mb-8">
-                    <h3 class="text-2xl md:text-3xl font-extrabold text-[#F0ABFC] mb-4">WordPress Developer</h3>
-                    <p class="text-gray-300 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-                        Project-based role. <strong class="text-white">You build;</strong> we manage clients, domains, hosting & communication. Fast payouts and a steady monthly project pipeline.
-                    </p>
-                </div>
-
-                <!-- Two Column Details -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
+                <!-- REPLACE YOUR_FORMSPREE_ID_HERE WITH YOUR ACTUAL ID BOSS! -->
+                <form action="https://formspree.io/f/mjgnqywz" method="POST" enctype="multipart/form-data">
                     
-                    <!-- Left Column: Work Includes -->
-                    <div>
-                        <h4 class="text-[#b24aff] font-bold text-lg mb-5 uppercase tracking-wider">Work Includes</h4>
-                        <ul class="job-list">
-                            <li>Informative Websites (7-12 pages)</li>
-                            <li>Standard WooCommerce Stores</li>
-                            <li>Landing Pages</li>
-                            <li>Client Changes Included</li>
-                        </ul>
+                    <!-- Section 1: Personal Details -->
+                    <div class="mb-10">
+                        <h3 class="form-section-title"><i class="ph-fill ph-user-circle"></i> Personal Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="glass-label">Full Name *</label>
+                                <input type="text" name="fullName" required class="glass-input" placeholder="e.g. Rahul Sharma">
+                            </div>
+                            <div>
+                                <label class="glass-label">Date of Birth *</label>
+                                <input type="date" name="dob" required class="glass-input" style="color-scheme: dark;">
+                            </div>
+                            <div>
+                                <label class="glass-label">Gender</label>
+                                <select name="gender" class="glass-input">
+                                    <option value="" disabled selected>Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="glass-label">Blood Group</label>
+                                <input type="text" name="bloodGroup" class="glass-input" placeholder="e.g. O+">
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Right Column: Payout Structure -->
-                    <div>
-                        <h4 class="text-[#b24aff] font-bold text-lg mb-5 uppercase tracking-wider">Payout Structure</h4>
-                        <ul class="job-list">
-                            <li><strong class="text-white">₹1,200</strong> - Full Website</li>
-                            <li><strong class="text-white">₹800</strong> - Landing Page</li>
-                            <li>Payment within <strong class="text-white">1 day</strong> after completion & final changes</li>
-                            <li>WhatsApp group with you + client + our team for updates</li>
-                            <li>Guaranteed <strong class="text-white">12+ projects/month</strong> based on performance</li>
-                            <li>Client response delay will NOT affect your payout</li>
-                        </ul>
+                    <!-- Section 2: Contact Information -->
+                    <div class="mb-10">
+                        <h3 class="form-section-title"><i class="ph-fill ph-address-book"></i> Contact Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="glass-label">Email Address *</label>
+                                <input type="email" name="email" required class="glass-input" placeholder="you@example.com">
+                            </div>
+                            <div>
+                                <label class="glass-label">Phone Number *</label>
+                                <input type="tel" name="phone" required class="glass-input" placeholder="+91 XXXXX XXXXX">
+                            </div>
+                            <div>
+                                <label class="glass-label">WhatsApp Number</label>
+                                <input type="tel" name="whatsapp" class="glass-input" placeholder="+91 XXXXX XXXXX">
+                            </div>
+                            <div>
+                                <label class="glass-label">Emergency Contact Name & Number *</label>
+                                <input type="text" name="emergencyContact" required class="glass-input" placeholder="Name - Phone">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="glass-label">Current Address *</label>
+                                <textarea name="currentAddress" rows="2" required class="glass-input resize-none" placeholder="Enter your full current residential address"></textarea>
+                            </div>
+                        </div>
                     </div>
 
-                </div>
-
-                <!-- Three Column Requirements Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <div class="inner-glass-box">
-                        <span class="text-xs text-gray-400 uppercase tracking-widest block mb-2">Requirements</span>
-                        <h5 class="text-white font-bold mb-2">Strong WordPress experience</h5>
-                        <p class="text-gray-400 text-sm">Clean, modern, responsive builds</p>
+                    <!-- Section 3: Professional Details -->
+                    <div class="mb-10">
+                        <h3 class="form-section-title"><i class="ph-fill ph-briefcase"></i> Professional Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="glass-label">Role / Designation *</label>
+                                <input type="text" name="role" required class="glass-input" placeholder="e.g. WordPress Developer">
+                            </div>
+                            <div>
+                                <label class="glass-label">Date of Joining</label>
+                                <input type="date" name="joiningDate" class="glass-input" style="color-scheme: dark;">
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="inner-glass-box">
-                        <span class="text-xs text-gray-400 uppercase tracking-widest block mb-2">WooCommerce</span>
-                        <h5 class="text-white font-bold mb-2">Basics expected</h5>
-                        <p class="text-gray-400 text-sm">Products, checkout, styling</p>
+
+                    <!-- Section 4: Bank & Statutory Details -->
+                    <div class="mb-10">
+                        <h3 class="form-section-title"><i class="ph-fill ph-bank"></i> Bank & Account Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="glass-label">Bank Name *</label>
+                                <input type="text" name="bankName" required class="glass-input" placeholder="e.g. HDFC Bank">
+                            </div>
+                            <div>
+                                <label class="glass-label">Account Holder Name *</label>
+                                <input type="text" name="accountName" required class="glass-input" placeholder="Name exactly as per bank">
+                            </div>
+                            <div>
+                                <label class="glass-label">Account Number *</label>
+                                <input type="text" name="accountNumber" required class="glass-input" placeholder="Enter Account Number">
+                            </div>
+                            <div>
+                                <label class="glass-label">IFSC Code *</label>
+                                <input type="text" name="ifscCode" required class="glass-input" placeholder="e.g. HDFC0001234">
+                            </div>
+                            <div>
+                                <label class="glass-label">PAN Card Number</label>
+                                <input type="text" name="panNumber" class="glass-input" placeholder="ABCDE1234F">
+                            </div>
+                            <div>
+                                <label class="glass-label">Aadhaar Number (Optional)</label>
+                                <input type="text" name="aadhaarNumber" class="glass-input" placeholder="XXXX XXXX XXXX">
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="inner-glass-box">
-                        <span class="text-xs text-gray-400 uppercase tracking-widest block mb-2">Communication</span>
-                        <h5 class="text-white font-bold mb-2">Clear updates</h5>
-                        <p class="text-gray-400 text-sm">Active in WhatsApp group</p>
+                    <!-- Submit Button -->
+                    <div class="text-center pt-8 border-t border-white/10 mt-6">
+                        <p class="text-xs text-gray-400 mb-6 italic">
+                            By submitting this form, you confirm that all details provided are correct and accurate, sir. 
+                        </p>
+                        <button type="submit" class="btn-gradient inline-flex items-center gap-2 px-10 py-4 rounded-full text-white font-bold text-lg w-full md:w-auto justify-center cursor-pointer border-none outline-none">
+                            <i class="ph-bold ph-paper-plane-tilt"></i> Submit Details Securely
+                        </button>
                     </div>
-                </div>
 
-                <!-- CTA Apply Section -->
-                <div class="text-center pt-6 border-t border-white/10">
-                    <p class="text-gray-300 mb-5 font-medium">Send Your Resume Now!</p>
-                    <a href="https://wa.me/917908469371?text=Hello%20Ashif%20Builds,%20I%20am%20applying%20for%20the%20WordPress%20Developer%20role!" class="btn-gradient inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-bold text-lg">
-                        <i class="ph-fill ph-whatsapp-logo text-2xl"></i> WhatsApp: +91 7908469371
-                    </a>
-                    <p class="text-xs text-gray-500 mt-6 italic">
-                        This is a <strong class="text-gray-400">project-based</strong> opportunity, not a fixed-salary role.
-                    </p>
-                </div>
-
+                </form>
             </div>
         </div>
     </main>
@@ -322,7 +367,8 @@
                        <li><a href="team.html">Our Team</a></li>
             <li><a href="https://p.ppsl.io/PYTMPS/49ocmk">Pay Now</a></li>
             <li><a href="pricing.html">Pricing</a></li>
- <li><a href="careers.html">Careers</a></li>            <li><a href="https://g.page/r/CatSiuBNYbPdEBM/review">Reviews</a></li>
+            <li><a href="careers.html">Careers</a></li>            
+            <li><a href="https://g.page/r/CatSiuBNYbPdEBM/review">Reviews</a></li>
              <li class="main-menu__item"><a class="ashif-link" href="victor.html">Meet Victor 🤖</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="referral.html">Referral Program</a></li>
